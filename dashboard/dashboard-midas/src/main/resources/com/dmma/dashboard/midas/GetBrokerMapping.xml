@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+    <description>Description of the Broker mapping</description>
+    <class name="com.dmma.dashboard.midas.dto.RootXMLElement">
+        <map-to xml="diffgram"></map-to>
+        <field name="getBrokerResult" type="com.dmma.dashboard.midas.dto.GetBrokerXMLElement" direct="true">
+             <bind-xml name="dsBI"/>
+        </field>
+    </class>
+
+    <class name="com.dmma.dashboard.midas.dto.GetBrokerXMLElement">
+        <map-to xml="dsBI"></map-to>
+        <field name="result" type="com.dmma.dashboard.midas.dto.GetBrokerDTO" direct="true">
+             <bind-xml name="dtBroker"/>
+        </field>
+    </class>
+    <class name="com.dmma.dashboard.midas.dto.GetBrokerDTO">
+        <field name="id" type="java.lang.Long" direct="true">
+             <bind-xml name="ID" node="element"/>
+        </field>
+        <field name="name" type="java.lang.String" direct="true">
+             <bind-xml name="Name" node="element"/>
+        </field>
+        <field name="title" type="java.lang.String" direct="true">
+             <bind-xml name="Title" node="element"/>
+        </field>
+        <field name="phone" type="java.lang.String" direct="true">
+             <bind-xml name="Phone" node="element"/>
+        </field>
+        <field name="cellPhone" type="java.lang.String" direct="true">
+             <bind-xml name="CellPhone" node="element"/>
+        </field>
+        <field name="fax" type="java.lang.String" direct="true">
+             <bind-xml name="Fax" node="element"/>
+        </field>
+        <field name="email" type="java.lang.String" direct="true">
+             <bind-xml name="EMail" node="element"/>
+        </field>
+        <field name="personalEmail" type="java.lang.String" direct="true">
+             <bind-xml name="EmailPersonal" node="element"/>
+        </field>
+        <field name="initials" type="java.lang.String" direct="true">
+             <bind-xml name="Initials" node="element"/>
+        </field>
+
+    </class>
+
+</mapping>

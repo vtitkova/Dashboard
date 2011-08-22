@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+    <description>Description of the mapping</description>
+    <class name="com.dmma.dashboard.midas.dto.RootXMLElement">
+        <map-to xml="diffgram"></map-to>
+        <field name="getChangedResult" type="com.dmma.dashboard.midas.dto.GetChangedXMLElement" direct="true">
+             <bind-xml name="dsSearchResult"/>
+        </field>
+    </class>
+
+    <class name="com.dmma.dashboard.midas.dto.GetChangedXMLElement">
+        <map-to xml="dsSearchResult"></map-to>
+        <field name="result" type="com.dmma.dashboard.midas.dto.GetChangedDTO" collection="arraylist" direct="true">
+             <bind-xml name="dtResult"/>
+        </field>
+    </class>
+    <class name="com.dmma.dashboard.midas.dto.GetChangedDTO">
+        <field name="id" type="java.lang.String" direct="true">
+             <bind-xml name="ID" node="element"/>
+        </field>
+        <field name="status" type="java.lang.String" direct="true">
+             <bind-xml name="Status" node="element"/>
+        </field>
+    </class>
+</mapping>

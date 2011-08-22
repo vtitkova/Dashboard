@@ -1,0 +1,5364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://emprof.no/"
+	xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://emprof.no/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://emprof.no/">
+			<s:element name="BaseProperty">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccesskey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sBroker"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="BasePropertyResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="BasePropertyResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getPictures">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectId"
+							type="s:long" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getPicturesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="getPicturesResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getScaledPictures">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectId"
+							type="s:long" />
+						<s:element minOccurs="1" maxOccurs="1" name="nSize"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getScaledPicturesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="getScaledPicturesResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="PropertyCount">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="PropertyCountResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="PropertyCountResult"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ChangedCount">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ChangedCountResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="ChangedCountResult"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddCounter">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pID" type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="pCounterType"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AddCounterResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="AddCounterResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SearchTestManual">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="n1" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="v1" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="n2" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="v2" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="n3" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="v3" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SearchTestManualResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="SearchTestManualResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SearchTest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pLocation"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pOwnType"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPropertyType"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pSaleRent"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPriceFrom"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPriceTo"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPropertySize"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pLotSize"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pBedRooms"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pSearchText"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pShowSold"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pShowShows"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pShowComing"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pOffice"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pQueryID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pUserID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pFK" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SearchTestResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="SearchTestResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SaveSearchTest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pUserKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pQueryName"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="pAlertMail"
+							type="s:int" />
+						<s:element minOccurs="1" maxOccurs="1" name="pAlertSMS"
+							type="s:int" />
+						<s:element minOccurs="0" maxOccurs="1" name="pLocation"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pOwnType"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPropertyType"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pSaleRent"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPriceFrom"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPriceTo"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pPropertySize"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pLotSize"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pBedRooms"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pSearchText"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pShowSold"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pShowShows"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pShowComing"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="pOffice"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SaveSearchTestResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="SaveSearchTestResult" type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsType">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="EstateTypes"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Count"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Offices"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsTypeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="NewsTypeResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsTypeDays">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="EstateTypes"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Count"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Offices"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="Days" type="s:int" />
+						<s:element minOccurs="1" maxOccurs="1" name="SortType"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsTypeDaysResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="NewsTypeDaysResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="News">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Count"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Offices"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="NewsResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsRandom">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Count"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Offices"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="NewsRandomResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="NewsRandomResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Search">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Params"
+							type="tns:ArrayOfStParam" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="ArrayOfStParam">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded" name="stParam"
+						type="tns:stParam" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="stParam" >
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="pName" type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="pValue"
+						type="s:string" />
+				</s:sequence>
+			</s:complexType>
+			<s:element name="SearchResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="SearchResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetChanged">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iMinutes"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetChangedResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetChangedResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetChangedBase">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iMinutes"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetChangedBaseResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="GetChangedBaseResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetSold">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iDays"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetSoldResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetSoldResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetSiteSettings">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetSiteSettingsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="GetSiteSettingsResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SaveSearch">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sQueryName"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="bAlertMail"
+							type="s:int" />
+						<s:element minOccurs="1" maxOccurs="1" name="bAlertSMS"
+							type="s:int" />
+						<s:element minOccurs="0" maxOccurs="1" name="Params"
+							type="tns:ArrayOfStParam" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="SaveSearchResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="SaveSearchResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getProspectDataDS">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectId"
+							type="s:long" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getProspectDataDSResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="getProspectDataDSResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getProspectDataXML">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectId"
+							type="s:long" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getProspectDataXMLResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="getProspectDataXMLResult" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="TestFunction">
+				<s:complexType />
+			</s:element>
+			<s:element name="TestFunctionResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="TestFunctionResult"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserLogin">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="UserName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Password"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserLoginResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="UserLoginResult"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserCellphoneControl_1">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="UserID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="PhoneNo"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserCellphoneControl_1Response">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="UserCellphoneControl_1Result" type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserCellphoneControl_2">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="UserID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="CellCode"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserCellphoneControl_2Response">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="UserCellphoneControl_2Result" type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserGetData">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="UserID"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserGetDataResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="UserGetDataResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentData">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentDataResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="AgentDataResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentGetQuery">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iQueryID"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentGetQueryResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="AgentGetQueryResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentQueryUpdate">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iQueryID"
+							type="s:int" />
+						<s:element minOccurs="0" maxOccurs="1" name="sQueryName"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="bAlertSMS"
+							type="s:boolean" />
+						<s:element minOccurs="1" maxOccurs="1" name="bAlertMail"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentQueryUpdateResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="AgentQueryUpdateResult" type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentInteress_v2">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectID"
+							type="s:int" />
+						<s:element minOccurs="1" maxOccurs="1" name="nLevel"
+							type="s:int" />
+						<s:element minOccurs="0" maxOccurs="1" name="sName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sComment"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentInteress_v2Response">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="AgentInteress_v2Result" type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentInteress">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectID"
+							type="s:int" />
+						<s:element minOccurs="1" maxOccurs="1" name="nLevel"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentInteressResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="AgentInteressResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentView">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nShowID"
+							type="s:int" />
+						<s:element minOccurs="1" maxOccurs="1" name="bCancel"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentViewResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="AgentViewResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserPassword">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sOldPassword"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sNewPassword"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserPasswordResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="UserPasswordResult"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserSendPassword">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sEMail"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserSendPasswordResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="UserSendPasswordResult" type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="BrokerMsg">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="dsInfo">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="BrokerMsgResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="BrokerMsgResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserRegistration">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sFirstName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sLastName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sEMail"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sCellPhone"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAdress"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAdress2"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sZipCode"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sCity"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sPrivatePhone"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sJobPhone"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sFax" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UserRegistrationResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="UserRegistrationResult" type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentSaveUser">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="UserID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sFirstName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sLastName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sCellPhone"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAdress"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAdress2"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sZipCode"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sCity"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sPrivatePhone"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sJobPhone"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sFax" type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="CellAlerts"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="AgentSaveUserResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="AgentSaveUserResult"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ClearSearch">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iQueryID"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="ClearSearchResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="ClearSearchResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UploadURL">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="iRef" type="s:int" />
+						<s:element minOccurs="0" maxOccurs="1" name="sOppdrag"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sURL" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="UploadURLResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="UploadURLResult"
+							type="s:boolean" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="TempLinkID">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sBaseIdent"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sPropertyNo"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="TempLinkIDResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="TempLinkIDResult"
+							type="s:long" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetControls">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetControlsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetControlsResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetActiveBid">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetActiveBidResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetActiveBidResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="MyProperty">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sUserID"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="MyPropertyResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="MyPropertyResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetChainOffices">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetChainOfficesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="GetChainOfficesResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBaseOffices">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBaseOfficesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="GetBaseOfficesResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBroker">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="OfficeID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="BrokerID"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBrokerResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetBrokerResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBrokerP">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="OfficeID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="BrokerID"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="PictureSize"
+							type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetBrokerPResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetBrokerPResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOffice">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iOfficeID"
+							type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOfficeResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetOfficeResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOfficeP">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="iPID" type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetOfficePResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="GetOfficePResult">
+							<s:complexType>
+								<s:sequence>
+									<s:element ref="s:schema" />
+									<s:any />
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="wRegisterInteress">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectID"
+							type="s:long" />
+						<s:element minOccurs="0" maxOccurs="1" name="sServiceName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p1n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p1v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p2n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p2v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p3n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p3v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p4n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p4v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p5n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p5v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p6n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p6v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p7n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p7v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p8n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p8v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p9n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p9v" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p10n" type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="p10v" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="wRegisterInteressResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="wRegisterInteressResult" type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RegisterInteress">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="sIdentityKey"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="sAccessKey"
+							type="s:string" />
+						<s:element minOccurs="1" maxOccurs="1" name="nProspectID"
+							type="s:long" />
+						<s:element minOccurs="0" maxOccurs="1" name="sServiceName"
+							type="s:string" />
+						<s:element minOccurs="0" maxOccurs="1" name="Params"
+							type="tns:ArrayOfStParam" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="RegisterInteressResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1"
+							name="RegisterInteressResult" type="s:int" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DataSet" nillable="true">
+				<s:complexType>
+					<s:sequence>
+						<s:element ref="s:schema" />
+						<s:any />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="int" type="s:int" />
+			<s:element name="boolean" type="s:boolean" />
+			<s:element name="string" nillable="true" type="s:string" />
+			<s:element name="long" type="s:long" />
+		</s:schema>
+	</wsdl:types>
+	<wsdl:message name="BasePropertySoapIn">
+		<wsdl:part name="parameters" element="tns:BaseProperty" />
+	</wsdl:message>
+	<wsdl:message name="BasePropertySoapOut">
+		<wsdl:part name="parameters" element="tns:BasePropertyResponse" />
+	</wsdl:message>
+	<wsdl:message name="getPicturesSoapIn">
+		<wsdl:part name="parameters" element="tns:getPictures" />
+	</wsdl:message>
+	<wsdl:message name="getPicturesSoapOut">
+		<wsdl:part name="parameters" element="tns:getPicturesResponse" />
+	</wsdl:message>
+	<wsdl:message name="getScaledPicturesSoapIn">
+		<wsdl:part name="parameters" element="tns:getScaledPictures" />
+	</wsdl:message>
+	<wsdl:message name="getScaledPicturesSoapOut">
+		<wsdl:part name="parameters" element="tns:getScaledPicturesResponse" />
+	</wsdl:message>
+	<wsdl:message name="PropertyCountSoapIn">
+		<wsdl:part name="parameters" element="tns:PropertyCount" />
+	</wsdl:message>
+	<wsdl:message name="PropertyCountSoapOut">
+		<wsdl:part name="parameters" element="tns:PropertyCountResponse" />
+	</wsdl:message>
+	<wsdl:message name="ChangedCountSoapIn">
+		<wsdl:part name="parameters" element="tns:ChangedCount" />
+	</wsdl:message>
+	<wsdl:message name="ChangedCountSoapOut">
+		<wsdl:part name="parameters" element="tns:ChangedCountResponse" />
+	</wsdl:message>
+	<wsdl:message name="AddCounterSoapIn">
+		<wsdl:part name="parameters" element="tns:AddCounter" />
+	</wsdl:message>
+	<wsdl:message name="AddCounterSoapOut">
+		<wsdl:part name="parameters" element="tns:AddCounterResponse" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestManualSoapIn">
+		<wsdl:part name="parameters" element="tns:SearchTestManual" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestManualSoapOut">
+		<wsdl:part name="parameters" element="tns:SearchTestManualResponse" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestSoapIn">
+		<wsdl:part name="parameters" element="tns:SearchTest" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestSoapOut">
+		<wsdl:part name="parameters" element="tns:SearchTestResponse" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchTestSoapIn">
+		<wsdl:part name="parameters" element="tns:SaveSearchTest" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchTestSoapOut">
+		<wsdl:part name="parameters" element="tns:SaveSearchTestResponse" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeSoapIn">
+		<wsdl:part name="parameters" element="tns:NewsType" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeSoapOut">
+		<wsdl:part name="parameters" element="tns:NewsTypeResponse" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeDaysSoapIn">
+		<wsdl:part name="parameters" element="tns:NewsTypeDays" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeDaysSoapOut">
+		<wsdl:part name="parameters" element="tns:NewsTypeDaysResponse" />
+	</wsdl:message>
+	<wsdl:message name="NewsSoapIn">
+		<wsdl:part name="parameters" element="tns:News" />
+	</wsdl:message>
+	<wsdl:message name="NewsSoapOut">
+		<wsdl:part name="parameters" element="tns:NewsResponse" />
+	</wsdl:message>
+	<wsdl:message name="NewsRandomSoapIn">
+		<wsdl:part name="parameters" element="tns:NewsRandom" />
+	</wsdl:message>
+	<wsdl:message name="NewsRandomSoapOut">
+		<wsdl:part name="parameters" element="tns:NewsRandomResponse" />
+	</wsdl:message>
+	<wsdl:message name="SearchSoapIn">
+		<wsdl:part name="parameters" element="tns:Search" />
+	</wsdl:message>
+	<wsdl:message name="SearchSoapOut">
+		<wsdl:part name="parameters" element="tns:SearchResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedSoapIn">
+		<wsdl:part name="parameters" element="tns:GetChanged" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedSoapOut">
+		<wsdl:part name="parameters" element="tns:GetChangedResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedBaseSoapIn">
+		<wsdl:part name="parameters" element="tns:GetChangedBase" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedBaseSoapOut">
+		<wsdl:part name="parameters" element="tns:GetChangedBaseResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetSoldSoapIn">
+		<wsdl:part name="parameters" element="tns:GetSold" />
+	</wsdl:message>
+	<wsdl:message name="GetSoldSoapOut">
+		<wsdl:part name="parameters" element="tns:GetSoldResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetSiteSettingsSoapIn">
+		<wsdl:part name="parameters" element="tns:GetSiteSettings" />
+	</wsdl:message>
+	<wsdl:message name="GetSiteSettingsSoapOut">
+		<wsdl:part name="parameters" element="tns:GetSiteSettingsResponse" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchSoapIn">
+		<wsdl:part name="parameters" element="tns:SaveSearch" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchSoapOut">
+		<wsdl:part name="parameters" element="tns:SaveSearchResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataDSSoapIn">
+		<wsdl:part name="parameters" element="tns:getProspectDataDS" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataDSSoapOut">
+		<wsdl:part name="parameters" element="tns:getProspectDataDSResponse" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataXMLSoapIn">
+		<wsdl:part name="parameters" element="tns:getProspectDataXML" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataXMLSoapOut">
+		<wsdl:part name="parameters" element="tns:getProspectDataXMLResponse" />
+	</wsdl:message>
+	<wsdl:message name="TestFunctionSoapIn">
+		<wsdl:part name="parameters" element="tns:TestFunction" />
+	</wsdl:message>
+	<wsdl:message name="TestFunctionSoapOut">
+		<wsdl:part name="parameters" element="tns:TestFunctionResponse" />
+	</wsdl:message>
+	<wsdl:message name="UserLoginSoapIn">
+		<wsdl:part name="parameters" element="tns:UserLogin" />
+	</wsdl:message>
+	<wsdl:message name="UserLoginSoapOut">
+		<wsdl:part name="parameters" element="tns:UserLoginResponse" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_1SoapIn">
+		<wsdl:part name="parameters" element="tns:UserCellphoneControl_1" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_1SoapOut">
+		<wsdl:part name="parameters" element="tns:UserCellphoneControl_1Response" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_2SoapIn">
+		<wsdl:part name="parameters" element="tns:UserCellphoneControl_2" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_2SoapOut">
+		<wsdl:part name="parameters" element="tns:UserCellphoneControl_2Response" />
+	</wsdl:message>
+	<wsdl:message name="UserGetDataSoapIn">
+		<wsdl:part name="parameters" element="tns:UserGetData" />
+	</wsdl:message>
+	<wsdl:message name="UserGetDataSoapOut">
+		<wsdl:part name="parameters" element="tns:UserGetDataResponse" />
+	</wsdl:message>
+	<wsdl:message name="AgentDataSoapIn">
+		<wsdl:part name="parameters" element="tns:AgentData" />
+	</wsdl:message>
+	<wsdl:message name="AgentDataSoapOut">
+		<wsdl:part name="parameters" element="tns:AgentDataResponse" />
+	</wsdl:message>
+	<wsdl:message name="AgentGetQuerySoapIn">
+		<wsdl:part name="parameters" element="tns:AgentGetQuery" />
+	</wsdl:message>
+	<wsdl:message name="AgentGetQuerySoapOut">
+		<wsdl:part name="parameters" element="tns:AgentGetQueryResponse" />
+	</wsdl:message>
+	<wsdl:message name="AgentQueryUpdateSoapIn">
+		<wsdl:part name="parameters" element="tns:AgentQueryUpdate" />
+	</wsdl:message>
+	<wsdl:message name="AgentQueryUpdateSoapOut">
+		<wsdl:part name="parameters" element="tns:AgentQueryUpdateResponse" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteress_v2SoapIn">
+		<wsdl:part name="parameters" element="tns:AgentInteress_v2" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteress_v2SoapOut">
+		<wsdl:part name="parameters" element="tns:AgentInteress_v2Response" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteressSoapIn">
+		<wsdl:part name="parameters" element="tns:AgentInteress" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteressSoapOut">
+		<wsdl:part name="parameters" element="tns:AgentInteressResponse" />
+	</wsdl:message>
+	<wsdl:message name="AgentViewSoapIn">
+		<wsdl:part name="parameters" element="tns:AgentView" />
+	</wsdl:message>
+	<wsdl:message name="AgentViewSoapOut">
+		<wsdl:part name="parameters" element="tns:AgentViewResponse" />
+	</wsdl:message>
+	<wsdl:message name="UserPasswordSoapIn">
+		<wsdl:part name="parameters" element="tns:UserPassword" />
+	</wsdl:message>
+	<wsdl:message name="UserPasswordSoapOut">
+		<wsdl:part name="parameters" element="tns:UserPasswordResponse" />
+	</wsdl:message>
+	<wsdl:message name="UserSendPasswordSoapIn">
+		<wsdl:part name="parameters" element="tns:UserSendPassword" />
+	</wsdl:message>
+	<wsdl:message name="UserSendPasswordSoapOut">
+		<wsdl:part name="parameters" element="tns:UserSendPasswordResponse" />
+	</wsdl:message>
+	<wsdl:message name="BrokerMsgSoapIn">
+		<wsdl:part name="parameters" element="tns:BrokerMsg" />
+	</wsdl:message>
+	<wsdl:message name="BrokerMsgSoapOut">
+		<wsdl:part name="parameters" element="tns:BrokerMsgResponse" />
+	</wsdl:message>
+	<wsdl:message name="UserRegistrationSoapIn">
+		<wsdl:part name="parameters" element="tns:UserRegistration" />
+	</wsdl:message>
+	<wsdl:message name="UserRegistrationSoapOut">
+		<wsdl:part name="parameters" element="tns:UserRegistrationResponse" />
+	</wsdl:message>
+	<wsdl:message name="AgentSaveUserSoapIn">
+		<wsdl:part name="parameters" element="tns:AgentSaveUser" />
+	</wsdl:message>
+	<wsdl:message name="AgentSaveUserSoapOut">
+		<wsdl:part name="parameters" element="tns:AgentSaveUserResponse" />
+	</wsdl:message>
+	<wsdl:message name="ClearSearchSoapIn">
+		<wsdl:part name="parameters" element="tns:ClearSearch" />
+	</wsdl:message>
+	<wsdl:message name="ClearSearchSoapOut">
+		<wsdl:part name="parameters" element="tns:ClearSearchResponse" />
+	</wsdl:message>
+	<wsdl:message name="UploadURLSoapIn">
+		<wsdl:part name="parameters" element="tns:UploadURL" />
+	</wsdl:message>
+	<wsdl:message name="UploadURLSoapOut">
+		<wsdl:part name="parameters" element="tns:UploadURLResponse" />
+	</wsdl:message>
+	<wsdl:message name="TempLinkIDSoapIn">
+		<wsdl:part name="parameters" element="tns:TempLinkID" />
+	</wsdl:message>
+	<wsdl:message name="TempLinkIDSoapOut">
+		<wsdl:part name="parameters" element="tns:TempLinkIDResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetControlsSoapIn">
+		<wsdl:part name="parameters" element="tns:GetControls" />
+	</wsdl:message>
+	<wsdl:message name="GetControlsSoapOut">
+		<wsdl:part name="parameters" element="tns:GetControlsResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveBidSoapIn">
+		<wsdl:part name="parameters" element="tns:GetActiveBid" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveBidSoapOut">
+		<wsdl:part name="parameters" element="tns:GetActiveBidResponse" />
+	</wsdl:message>
+	<wsdl:message name="MyPropertySoapIn">
+		<wsdl:part name="parameters" element="tns:MyProperty" />
+	</wsdl:message>
+	<wsdl:message name="MyPropertySoapOut">
+		<wsdl:part name="parameters" element="tns:MyPropertyResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetChainOfficesSoapIn">
+		<wsdl:part name="parameters" element="tns:GetChainOffices" />
+	</wsdl:message>
+	<wsdl:message name="GetChainOfficesSoapOut">
+		<wsdl:part name="parameters" element="tns:GetChainOfficesResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetBaseOfficesSoapIn">
+		<wsdl:part name="parameters" element="tns:GetBaseOffices" />
+	</wsdl:message>
+	<wsdl:message name="GetBaseOfficesSoapOut">
+		<wsdl:part name="parameters" element="tns:GetBaseOfficesResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerSoapIn">
+		<wsdl:part name="parameters" element="tns:GetBroker" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerSoapOut">
+		<wsdl:part name="parameters" element="tns:GetBrokerResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerPSoapIn">
+		<wsdl:part name="parameters" element="tns:GetBrokerP" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerPSoapOut">
+		<wsdl:part name="parameters" element="tns:GetBrokerPResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficeSoapIn">
+		<wsdl:part name="parameters" element="tns:GetOffice" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficeSoapOut">
+		<wsdl:part name="parameters" element="tns:GetOfficeResponse" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficePSoapIn">
+		<wsdl:part name="parameters" element="tns:GetOfficeP" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficePSoapOut">
+		<wsdl:part name="parameters" element="tns:GetOfficePResponse" />
+	</wsdl:message>
+	<wsdl:message name="wRegisterInteressSoapIn">
+		<wsdl:part name="parameters" element="tns:wRegisterInteress" />
+	</wsdl:message>
+	<wsdl:message name="wRegisterInteressSoapOut">
+		<wsdl:part name="parameters" element="tns:wRegisterInteressResponse" />
+	</wsdl:message>
+	<wsdl:message name="RegisterInteressSoapIn">
+		<wsdl:part name="parameters" element="tns:RegisterInteress" />
+	</wsdl:message>
+	<wsdl:message name="RegisterInteressSoapOut">
+		<wsdl:part name="parameters" element="tns:RegisterInteressResponse" />
+	</wsdl:message>
+	<wsdl:message name="BasePropertyHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccesskey" type="s:string" />
+		<wsdl:part name="sBroker" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="BasePropertyHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getPicturesHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getPicturesHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getScaledPicturesHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+		<wsdl:part name="nSize" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getScaledPicturesHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="PropertyCountHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="PropertyCountHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="ChangedCountHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="ChangedCountHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="AddCounterHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="pID" type="s:string" />
+		<wsdl:part name="pCounterType" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AddCounterHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestManualHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="n1" type="s:string" />
+		<wsdl:part name="v1" type="s:string" />
+		<wsdl:part name="n2" type="s:string" />
+		<wsdl:part name="v2" type="s:string" />
+		<wsdl:part name="n3" type="s:string" />
+		<wsdl:part name="v3" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestManualHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="pLocation" type="s:string" />
+		<wsdl:part name="pOwnType" type="s:string" />
+		<wsdl:part name="pPropertyType" type="s:string" />
+		<wsdl:part name="pSaleRent" type="s:string" />
+		<wsdl:part name="pPriceFrom" type="s:string" />
+		<wsdl:part name="pPriceTo" type="s:string" />
+		<wsdl:part name="pPropertySize" type="s:string" />
+		<wsdl:part name="pLotSize" type="s:string" />
+		<wsdl:part name="pBedRooms" type="s:string" />
+		<wsdl:part name="pSearchText" type="s:string" />
+		<wsdl:part name="pShowSold" type="s:string" />
+		<wsdl:part name="pShowShows" type="s:string" />
+		<wsdl:part name="pShowComing" type="s:string" />
+		<wsdl:part name="pOffice" type="s:string" />
+		<wsdl:part name="pQueryID" type="s:string" />
+		<wsdl:part name="pUserID" type="s:string" />
+		<wsdl:part name="pFK" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchTestHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="pUserKey" type="s:string" />
+		<wsdl:part name="pQueryName" type="s:string" />
+		<wsdl:part name="pAlertMail" type="s:string" />
+		<wsdl:part name="pAlertSMS" type="s:string" />
+		<wsdl:part name="pLocation" type="s:string" />
+		<wsdl:part name="pOwnType" type="s:string" />
+		<wsdl:part name="pPropertyType" type="s:string" />
+		<wsdl:part name="pSaleRent" type="s:string" />
+		<wsdl:part name="pPriceFrom" type="s:string" />
+		<wsdl:part name="pPriceTo" type="s:string" />
+		<wsdl:part name="pPropertySize" type="s:string" />
+		<wsdl:part name="pLotSize" type="s:string" />
+		<wsdl:part name="pBedRooms" type="s:string" />
+		<wsdl:part name="pSearchText" type="s:string" />
+		<wsdl:part name="pShowSold" type="s:string" />
+		<wsdl:part name="pShowShows" type="s:string" />
+		<wsdl:part name="pShowComing" type="s:string" />
+		<wsdl:part name="pOffice" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchTestHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="EstateTypes" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeDaysHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="EstateTypes" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+		<wsdl:part name="Days" type="s:string" />
+		<wsdl:part name="SortType" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeDaysHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="NewsHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="NewsRandomHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsRandomHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iMinutes" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedBaseHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="iMinutes" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedBaseHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetSoldHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iDays" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetSoldHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetSiteSettingsHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetSiteSettingsHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataDSHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataDSHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataXMLHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataXMLHttpGetOut">
+		<wsdl:part name="Body" element="tns:string" />
+	</wsdl:message>
+	<wsdl:message name="TestFunctionHttpGetIn" />
+	<wsdl:message name="TestFunctionHttpGetOut">
+		<wsdl:part name="Body" element="tns:string" />
+	</wsdl:message>
+	<wsdl:message name="UserLoginHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserName" type="s:string" />
+		<wsdl:part name="Password" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserLoginHttpGetOut">
+		<wsdl:part name="Body" element="tns:string" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_1HttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+		<wsdl:part name="PhoneNo" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_1HttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_2HttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+		<wsdl:part name="CellCode" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_2HttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserGetDataHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserGetDataHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="AgentDataHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentDataHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="AgentGetQueryHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="iQueryID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentGetQueryHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="AgentQueryUpdateHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="iQueryID" type="s:string" />
+		<wsdl:part name="sQueryName" type="s:string" />
+		<wsdl:part name="bAlertSMS" type="s:string" />
+		<wsdl:part name="bAlertMail" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentQueryUpdateHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteress_v2HttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="nProspectID" type="s:string" />
+		<wsdl:part name="nLevel" type="s:string" />
+		<wsdl:part name="sName" type="s:string" />
+		<wsdl:part name="sComment" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteress_v2HttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteressHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="nProspectID" type="s:string" />
+		<wsdl:part name="nLevel" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteressHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="AgentViewHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="nShowID" type="s:string" />
+		<wsdl:part name="bCancel" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentViewHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserPasswordHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="sOldPassword" type="s:string" />
+		<wsdl:part name="sNewPassword" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserPasswordHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="UserSendPasswordHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sEMail" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserSendPasswordHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserRegistrationHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sFirstName" type="s:string" />
+		<wsdl:part name="sLastName" type="s:string" />
+		<wsdl:part name="sEMail" type="s:string" />
+		<wsdl:part name="sCellPhone" type="s:string" />
+		<wsdl:part name="sAdress" type="s:string" />
+		<wsdl:part name="sAdress2" type="s:string" />
+		<wsdl:part name="sZipCode" type="s:string" />
+		<wsdl:part name="sCity" type="s:string" />
+		<wsdl:part name="sPrivatePhone" type="s:string" />
+		<wsdl:part name="sJobPhone" type="s:string" />
+		<wsdl:part name="sFax" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserRegistrationHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="AgentSaveUserHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+		<wsdl:part name="sFirstName" type="s:string" />
+		<wsdl:part name="sLastName" type="s:string" />
+		<wsdl:part name="sCellPhone" type="s:string" />
+		<wsdl:part name="sAdress" type="s:string" />
+		<wsdl:part name="sAdress2" type="s:string" />
+		<wsdl:part name="sZipCode" type="s:string" />
+		<wsdl:part name="sCity" type="s:string" />
+		<wsdl:part name="sPrivatePhone" type="s:string" />
+		<wsdl:part name="sJobPhone" type="s:string" />
+		<wsdl:part name="sFax" type="s:string" />
+		<wsdl:part name="CellAlerts" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentSaveUserHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="ClearSearchHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="iQueryID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="ClearSearchHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UploadURLHttpGetIn">
+		<wsdl:part name="iRef" type="s:string" />
+		<wsdl:part name="sOppdrag" type="s:string" />
+		<wsdl:part name="sURL" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UploadURLHttpGetOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="TempLinkIDHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sBaseIdent" type="s:string" />
+		<wsdl:part name="sPropertyNo" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="TempLinkIDHttpGetOut">
+		<wsdl:part name="Body" element="tns:long" />
+	</wsdl:message>
+	<wsdl:message name="GetControlsHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetControlsHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveBidHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveBidHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="MyPropertyHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sUserID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="MyPropertyHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetChainOfficesHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetChainOfficesHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetBaseOfficesHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetBaseOfficesHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="OfficeID" type="s:string" />
+		<wsdl:part name="BrokerID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerPHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="OfficeID" type="s:string" />
+		<wsdl:part name="BrokerID" type="s:string" />
+		<wsdl:part name="PictureSize" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerPHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficeHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iOfficeID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficeHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficePHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iPID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficePHttpGetOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="wRegisterInteressHttpGetIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectID" type="s:string" />
+		<wsdl:part name="sServiceName" type="s:string" />
+		<wsdl:part name="p1n" type="s:string" />
+		<wsdl:part name="p1v" type="s:string" />
+		<wsdl:part name="p2n" type="s:string" />
+		<wsdl:part name="p2v" type="s:string" />
+		<wsdl:part name="p3n" type="s:string" />
+		<wsdl:part name="p3v" type="s:string" />
+		<wsdl:part name="p4n" type="s:string" />
+		<wsdl:part name="p4v" type="s:string" />
+		<wsdl:part name="p5n" type="s:string" />
+		<wsdl:part name="p5v" type="s:string" />
+		<wsdl:part name="p6n" type="s:string" />
+		<wsdl:part name="p6v" type="s:string" />
+		<wsdl:part name="p7n" type="s:string" />
+		<wsdl:part name="p7v" type="s:string" />
+		<wsdl:part name="p8n" type="s:string" />
+		<wsdl:part name="p8v" type="s:string" />
+		<wsdl:part name="p9n" type="s:string" />
+		<wsdl:part name="p9v" type="s:string" />
+		<wsdl:part name="p10n" type="s:string" />
+		<wsdl:part name="p10v" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="wRegisterInteressHttpGetOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="BasePropertyHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccesskey" type="s:string" />
+		<wsdl:part name="sBroker" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="BasePropertyHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getPicturesHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getPicturesHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getScaledPicturesHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+		<wsdl:part name="nSize" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getScaledPicturesHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="PropertyCountHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="PropertyCountHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="ChangedCountHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="ChangedCountHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="AddCounterHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="pID" type="s:string" />
+		<wsdl:part name="pCounterType" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AddCounterHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestManualHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="n1" type="s:string" />
+		<wsdl:part name="v1" type="s:string" />
+		<wsdl:part name="n2" type="s:string" />
+		<wsdl:part name="v2" type="s:string" />
+		<wsdl:part name="n3" type="s:string" />
+		<wsdl:part name="v3" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestManualHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="pLocation" type="s:string" />
+		<wsdl:part name="pOwnType" type="s:string" />
+		<wsdl:part name="pPropertyType" type="s:string" />
+		<wsdl:part name="pSaleRent" type="s:string" />
+		<wsdl:part name="pPriceFrom" type="s:string" />
+		<wsdl:part name="pPriceTo" type="s:string" />
+		<wsdl:part name="pPropertySize" type="s:string" />
+		<wsdl:part name="pLotSize" type="s:string" />
+		<wsdl:part name="pBedRooms" type="s:string" />
+		<wsdl:part name="pSearchText" type="s:string" />
+		<wsdl:part name="pShowSold" type="s:string" />
+		<wsdl:part name="pShowShows" type="s:string" />
+		<wsdl:part name="pShowComing" type="s:string" />
+		<wsdl:part name="pOffice" type="s:string" />
+		<wsdl:part name="pQueryID" type="s:string" />
+		<wsdl:part name="pUserID" type="s:string" />
+		<wsdl:part name="pFK" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="SearchTestHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchTestHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="pUserKey" type="s:string" />
+		<wsdl:part name="pQueryName" type="s:string" />
+		<wsdl:part name="pAlertMail" type="s:string" />
+		<wsdl:part name="pAlertSMS" type="s:string" />
+		<wsdl:part name="pLocation" type="s:string" />
+		<wsdl:part name="pOwnType" type="s:string" />
+		<wsdl:part name="pPropertyType" type="s:string" />
+		<wsdl:part name="pSaleRent" type="s:string" />
+		<wsdl:part name="pPriceFrom" type="s:string" />
+		<wsdl:part name="pPriceTo" type="s:string" />
+		<wsdl:part name="pPropertySize" type="s:string" />
+		<wsdl:part name="pLotSize" type="s:string" />
+		<wsdl:part name="pBedRooms" type="s:string" />
+		<wsdl:part name="pSearchText" type="s:string" />
+		<wsdl:part name="pShowSold" type="s:string" />
+		<wsdl:part name="pShowShows" type="s:string" />
+		<wsdl:part name="pShowComing" type="s:string" />
+		<wsdl:part name="pOffice" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="SaveSearchTestHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="EstateTypes" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeDaysHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="EstateTypes" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+		<wsdl:part name="Days" type="s:string" />
+		<wsdl:part name="SortType" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsTypeDaysHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="NewsHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="NewsRandomHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="Count" type="s:string" />
+		<wsdl:part name="Offices" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="NewsRandomHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iMinutes" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedBaseHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="iMinutes" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetChangedBaseHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetSoldHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iDays" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetSoldHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetSiteSettingsHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetSiteSettingsHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataDSHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataDSHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataXMLHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectId" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="getProspectDataXMLHttpPostOut">
+		<wsdl:part name="Body" element="tns:string" />
+	</wsdl:message>
+	<wsdl:message name="TestFunctionHttpPostIn" />
+	<wsdl:message name="TestFunctionHttpPostOut">
+		<wsdl:part name="Body" element="tns:string" />
+	</wsdl:message>
+	<wsdl:message name="UserLoginHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserName" type="s:string" />
+		<wsdl:part name="Password" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserLoginHttpPostOut">
+		<wsdl:part name="Body" element="tns:string" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_1HttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+		<wsdl:part name="PhoneNo" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_1HttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_2HttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+		<wsdl:part name="CellCode" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserCellphoneControl_2HttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserGetDataHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserGetDataHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="AgentDataHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentDataHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="AgentGetQueryHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="iQueryID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentGetQueryHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="AgentQueryUpdateHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="iQueryID" type="s:string" />
+		<wsdl:part name="sQueryName" type="s:string" />
+		<wsdl:part name="bAlertSMS" type="s:string" />
+		<wsdl:part name="bAlertMail" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentQueryUpdateHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteress_v2HttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="nProspectID" type="s:string" />
+		<wsdl:part name="nLevel" type="s:string" />
+		<wsdl:part name="sName" type="s:string" />
+		<wsdl:part name="sComment" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteress_v2HttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteressHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="nProspectID" type="s:string" />
+		<wsdl:part name="nLevel" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentInteressHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="AgentViewHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="nShowID" type="s:string" />
+		<wsdl:part name="bCancel" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentViewHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserPasswordHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="sOldPassword" type="s:string" />
+		<wsdl:part name="sNewPassword" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserPasswordHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="UserSendPasswordHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sEMail" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserSendPasswordHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UserRegistrationHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="sFirstName" type="s:string" />
+		<wsdl:part name="sLastName" type="s:string" />
+		<wsdl:part name="sEMail" type="s:string" />
+		<wsdl:part name="sCellPhone" type="s:string" />
+		<wsdl:part name="sAdress" type="s:string" />
+		<wsdl:part name="sAdress2" type="s:string" />
+		<wsdl:part name="sZipCode" type="s:string" />
+		<wsdl:part name="sCity" type="s:string" />
+		<wsdl:part name="sPrivatePhone" type="s:string" />
+		<wsdl:part name="sJobPhone" type="s:string" />
+		<wsdl:part name="sFax" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UserRegistrationHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="AgentSaveUserHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="UserID" type="s:string" />
+		<wsdl:part name="sFirstName" type="s:string" />
+		<wsdl:part name="sLastName" type="s:string" />
+		<wsdl:part name="sCellPhone" type="s:string" />
+		<wsdl:part name="sAdress" type="s:string" />
+		<wsdl:part name="sAdress2" type="s:string" />
+		<wsdl:part name="sZipCode" type="s:string" />
+		<wsdl:part name="sCity" type="s:string" />
+		<wsdl:part name="sPrivatePhone" type="s:string" />
+		<wsdl:part name="sJobPhone" type="s:string" />
+		<wsdl:part name="sFax" type="s:string" />
+		<wsdl:part name="CellAlerts" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="AgentSaveUserHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:message name="ClearSearchHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sUserKey" type="s:string" />
+		<wsdl:part name="iQueryID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="ClearSearchHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="UploadURLHttpPostIn">
+		<wsdl:part name="iRef" type="s:string" />
+		<wsdl:part name="sOppdrag" type="s:string" />
+		<wsdl:part name="sURL" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="UploadURLHttpPostOut">
+		<wsdl:part name="Body" element="tns:boolean" />
+	</wsdl:message>
+	<wsdl:message name="TempLinkIDHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sBaseIdent" type="s:string" />
+		<wsdl:part name="sPropertyNo" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="TempLinkIDHttpPostOut">
+		<wsdl:part name="Body" element="tns:long" />
+	</wsdl:message>
+	<wsdl:message name="GetControlsHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetControlsHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveBidHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetActiveBidHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="MyPropertyHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sUserID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="MyPropertyHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetChainOfficesHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetChainOfficesHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetBaseOfficesHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetBaseOfficesHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="OfficeID" type="s:string" />
+		<wsdl:part name="BrokerID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerPHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="OfficeID" type="s:string" />
+		<wsdl:part name="BrokerID" type="s:string" />
+		<wsdl:part name="PictureSize" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetBrokerPHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficeHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iOfficeID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficeHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficePHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="iPID" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="GetOfficePHttpPostOut">
+		<wsdl:part name="Body" element="tns:DataSet" />
+	</wsdl:message>
+	<wsdl:message name="wRegisterInteressHttpPostIn">
+		<wsdl:part name="sIdentityKey" type="s:string" />
+		<wsdl:part name="sAccessKey" type="s:string" />
+		<wsdl:part name="nProspectID" type="s:string" />
+		<wsdl:part name="sServiceName" type="s:string" />
+		<wsdl:part name="p1n" type="s:string" />
+		<wsdl:part name="p1v" type="s:string" />
+		<wsdl:part name="p2n" type="s:string" />
+		<wsdl:part name="p2v" type="s:string" />
+		<wsdl:part name="p3n" type="s:string" />
+		<wsdl:part name="p3v" type="s:string" />
+		<wsdl:part name="p4n" type="s:string" />
+		<wsdl:part name="p4v" type="s:string" />
+		<wsdl:part name="p5n" type="s:string" />
+		<wsdl:part name="p5v" type="s:string" />
+		<wsdl:part name="p6n" type="s:string" />
+		<wsdl:part name="p6v" type="s:string" />
+		<wsdl:part name="p7n" type="s:string" />
+		<wsdl:part name="p7v" type="s:string" />
+		<wsdl:part name="p8n" type="s:string" />
+		<wsdl:part name="p8v" type="s:string" />
+		<wsdl:part name="p9n" type="s:string" />
+		<wsdl:part name="p9v" type="s:string" />
+		<wsdl:part name="p10n" type="s:string" />
+		<wsdl:part name="p10v" type="s:string" />
+	</wsdl:message>
+	<wsdl:message name="wRegisterInteressHttpPostOut">
+		<wsdl:part name="Body" element="tns:int" />
+	</wsdl:message>
+	<wsdl:portType name="wsData01Soap">
+		<wsdl:operation name="BaseProperty">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle eiendommer for
+				en base</wsdl:documentation>
+			<wsdl:input message="tns:BasePropertySoapIn" />
+			<wsdl:output message="tns:BasePropertySoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer full
+				størrelse bilder til et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getPicturesSoapIn" />
+			<wsdl:output message="tns:getPicturesSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer bilder i
+				valgfri størrelse til et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getScaledPicturesSoapIn" />
+			<wsdl:output message="tns:getScaledPicturesSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Antall eiendommer
+				for en kjede</wsdl:documentation>
+			<wsdl:input message="tns:PropertyCountSoapIn" />
+			<wsdl:output message="tns:PropertyCountSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Antall endrede
+				eiendommer for en kjede</wsdl:documentation>
+			<wsdl:input message="tns:ChangedCountSoapIn" />
+			<wsdl:output message="tns:ChangedCountSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adder teller
+			</wsdl:documentation>
+			<wsdl:input message="tns:AddCounterSoapIn" />
+			<wsdl:output message="tns:AddCounterSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av søk
+				eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:SearchTestManualSoapIn" />
+			<wsdl:output message="tns:SearchTestManualSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av søk
+				eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:SearchTestSoapIn" />
+			<wsdl:output message="tns:SearchTestSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av lagre søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:SaveSearchTestSoapIn" />
+			<wsdl:output message="tns:SaveSearchTestSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall og kontorID (kommaseparert ved flere kontor)
+			</wsdl:documentation>
+			<wsdl:input message="tns:NewsTypeSoapIn" />
+			<wsdl:output message="tns:NewsTypeSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall, typer (kommaseparert), kontorID (kommaseparert ved
+				flere kontor), Antal Dager siden publisert/endret, 0 for publisert/1
+				for endret</wsdl:documentation>
+			<wsdl:input message="tns:NewsTypeDaysSoapIn" />
+			<wsdl:output message="tns:NewsTypeDaysSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall og kontorID (kommaseparert ved flere kontor)
+			</wsdl:documentation>
+			<wsdl:input message="tns:NewsSoapIn" />
+			<wsdl:output message="tns:NewsSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Et anntall
+				tilfeldige eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:NewsRandomSoapIn" />
+			<wsdl:output message="tns:NewsRandomSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="Search">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk eiendommer -
+				input kriterier som string array parvis navn/verdi
+			</wsdl:documentation>
+			<wsdl:input message="tns:SearchSoapIn" />
+			<wsdl:output message="tns:SearchSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk endrede
+				eiendommer - input antall minutter</wsdl:documentation>
+			<wsdl:input message="tns:GetChangedSoapIn" />
+			<wsdl:output message="tns:GetChangedSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk endrede
+				eiendommer - input antall minutter</wsdl:documentation>
+			<wsdl:input message="tns:GetChangedBaseSoapIn" />
+			<wsdl:output message="tns:GetChangedBaseSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk solgte
+				eiendommer - input antall dager</wsdl:documentation>
+			<wsdl:input message="tns:GetSoldSoapIn" />
+			<wsdl:output message="tns:GetSoldSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returnerer website
+				innstillinger</wsdl:documentation>
+			<wsdl:input message="tns:GetSiteSettingsSoapIn" />
+			<wsdl:output message="tns:GetSiteSettingsSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearch">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lagre søk - input
+				kriterier som string array parvis navn/verdi</wsdl:documentation>
+			<wsdl:input message="tns:SaveSearchSoapIn" />
+			<wsdl:output message="tns:SaveSearchSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer xml dataset
+				for et enkelt oppdrag. Input IdentityKey og ProspektId
+			</wsdl:documentation>
+			<wsdl:input message="tns:getProspectDataDSSoapIn" />
+			<wsdl:output message="tns:getProspectDataDSSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer xml streng
+				for et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getProspectDataXMLSoapIn" />
+			<wsdl:output message="tns:getProspectDataXMLSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returnerer verdien
+				Test som string. Kun for test av forbindelse </wsdl:documentation>
+			<wsdl:input message="tns:TestFunctionSoapIn" />
+			<wsdl:output message="tns:TestFunctionSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker login
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserLoginSoapIn" />
+			<wsdl:output message="tns:UserLoginSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mobil telefon
+				kontroll Step 1</wsdl:documentation>
+			<wsdl:input message="tns:UserCellphoneControl_1SoapIn" />
+			<wsdl:output message="tns:UserCellphoneControl_1SoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mobil telefon
+				kontroll Step 2</wsdl:documentation>
+			<wsdl:input message="tns:UserCellphoneControl_2SoapIn" />
+			<wsdl:output message="tns:UserCellphoneControl_2SoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker data
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserGetDataSoapIn" />
+			<wsdl:output message="tns:UserGetDataSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Innhold boligagent
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentDataSoapIn" />
+			<wsdl:output message="tns:AgentDataSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hente lagret søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentGetQuerySoapIn" />
+			<wsdl:output message="tns:AgentGetQuerySoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Oppdater søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentQueryUpdateSoapIn" />
+			<wsdl:output message="tns:AgentQueryUpdateSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrer interesse
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentInteress_v2SoapIn" />
+			<wsdl:output message="tns:AgentInteress_v2SoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrer interesse
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentInteressSoapIn" />
+			<wsdl:output message="tns:AgentInteressSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Visninger
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentViewSoapIn" />
+			<wsdl:output message="tns:AgentViewSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Endre passord
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserPasswordSoapIn" />
+			<wsdl:output message="tns:UserPasswordSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send passord
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserSendPasswordSoapIn" />
+			<wsdl:output message="tns:UserSendPasswordSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="BrokerMsg">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Meglermelding
+			</wsdl:documentation>
+			<wsdl:input message="tns:BrokerMsgSoapIn" />
+			<wsdl:output message="tns:BrokerMsgSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker registrering
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserRegistrationSoapIn" />
+			<wsdl:output message="tns:UserRegistrationSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker registrering
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentSaveUserSoapIn" />
+			<wsdl:output message="tns:AgentSaveUserSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Slett søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:ClearSearchSoapIn" />
+			<wsdl:output message="tns:ClearSearchSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Upload url til fil
+				som skal lastes ned</wsdl:documentation>
+			<wsdl:input message="tns:UploadURLSoapIn" />
+			<wsdl:output message="tns:UploadURLSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Temporær metode for
+				kobling mellom baseident og oppdragsnr</wsdl:documentation>
+			<wsdl:input message="tns:TempLinkIDSoapIn" />
+			<wsdl:output message="tns:TempLinkIDSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søkekontroller og
+				verdier til disse</wsdl:documentation>
+			<wsdl:input message="tns:GetControlsSoapIn" />
+			<wsdl:output message="tns:GetControlsSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aktive bud
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetActiveBidSoapIn" />
+			<wsdl:output message="tns:GetActiveBidSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Selger informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:MyPropertySoapIn" />
+			<wsdl:output message="tns:MyPropertySoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle kontorer i en
+				kjede</wsdl:documentation>
+			<wsdl:input message="tns:GetChainOfficesSoapIn" />
+			<wsdl:output message="tns:GetChainOfficesSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle kontorer i en
+				region</wsdl:documentation>
+			<wsdl:input message="tns:GetBaseOfficesSoapIn" />
+			<wsdl:output message="tns:GetBaseOfficesSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Megler informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetBrokerSoapIn" />
+			<wsdl:output message="tns:GetBrokerSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Megler informasjon
+				med bilde</wsdl:documentation>
+			<wsdl:input message="tns:GetBrokerPSoapIn" />
+			<wsdl:output message="tns:GetBrokerPSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kontor informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetOfficeSoapIn" />
+			<wsdl:output message="tns:GetOfficeSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kontor informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetOfficePSoapIn" />
+			<wsdl:output message="tns:GetOfficePSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Wrapper for
+				RegisterInteress</wsdl:documentation>
+			<wsdl:input message="tns:wRegisterInteressSoapIn" />
+			<wsdl:output message="tns:wRegisterInteressSoapOut" />
+		</wsdl:operation>
+		<wsdl:operation name="RegisterInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Register customer
+				interess</wsdl:documentation>
+			<wsdl:input message="tns:RegisterInteressSoapIn" />
+			<wsdl:output message="tns:RegisterInteressSoapOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="wsData01HttpGet">
+		<wsdl:operation name="BaseProperty">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle eiendommer for
+				en base</wsdl:documentation>
+			<wsdl:input message="tns:BasePropertyHttpGetIn" />
+			<wsdl:output message="tns:BasePropertyHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer full
+				størrelse bilder til et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getPicturesHttpGetIn" />
+			<wsdl:output message="tns:getPicturesHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer bilder i
+				valgfri størrelse til et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getScaledPicturesHttpGetIn" />
+			<wsdl:output message="tns:getScaledPicturesHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Antall eiendommer
+				for en kjede</wsdl:documentation>
+			<wsdl:input message="tns:PropertyCountHttpGetIn" />
+			<wsdl:output message="tns:PropertyCountHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Antall endrede
+				eiendommer for en kjede</wsdl:documentation>
+			<wsdl:input message="tns:ChangedCountHttpGetIn" />
+			<wsdl:output message="tns:ChangedCountHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adder teller
+			</wsdl:documentation>
+			<wsdl:input message="tns:AddCounterHttpGetIn" />
+			<wsdl:output message="tns:AddCounterHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av søk
+				eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:SearchTestManualHttpGetIn" />
+			<wsdl:output message="tns:SearchTestManualHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av søk
+				eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:SearchTestHttpGetIn" />
+			<wsdl:output message="tns:SearchTestHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av lagre søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:SaveSearchTestHttpGetIn" />
+			<wsdl:output message="tns:SaveSearchTestHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall og kontorID (kommaseparert ved flere kontor)
+			</wsdl:documentation>
+			<wsdl:input message="tns:NewsTypeHttpGetIn" />
+			<wsdl:output message="tns:NewsTypeHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall, typer (kommaseparert), kontorID (kommaseparert ved
+				flere kontor), Antal Dager siden publisert/endret, 0 for publisert/1
+				for endret</wsdl:documentation>
+			<wsdl:input message="tns:NewsTypeDaysHttpGetIn" />
+			<wsdl:output message="tns:NewsTypeDaysHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall og kontorID (kommaseparert ved flere kontor)
+			</wsdl:documentation>
+			<wsdl:input message="tns:NewsHttpGetIn" />
+			<wsdl:output message="tns:NewsHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Et anntall
+				tilfeldige eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:NewsRandomHttpGetIn" />
+			<wsdl:output message="tns:NewsRandomHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk endrede
+				eiendommer - input antall minutter</wsdl:documentation>
+			<wsdl:input message="tns:GetChangedHttpGetIn" />
+			<wsdl:output message="tns:GetChangedHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk endrede
+				eiendommer - input antall minutter</wsdl:documentation>
+			<wsdl:input message="tns:GetChangedBaseHttpGetIn" />
+			<wsdl:output message="tns:GetChangedBaseHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk solgte
+				eiendommer - input antall dager</wsdl:documentation>
+			<wsdl:input message="tns:GetSoldHttpGetIn" />
+			<wsdl:output message="tns:GetSoldHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returnerer website
+				innstillinger</wsdl:documentation>
+			<wsdl:input message="tns:GetSiteSettingsHttpGetIn" />
+			<wsdl:output message="tns:GetSiteSettingsHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer xml dataset
+				for et enkelt oppdrag. Input IdentityKey og ProspektId
+			</wsdl:documentation>
+			<wsdl:input message="tns:getProspectDataDSHttpGetIn" />
+			<wsdl:output message="tns:getProspectDataDSHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer xml streng
+				for et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getProspectDataXMLHttpGetIn" />
+			<wsdl:output message="tns:getProspectDataXMLHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returnerer verdien
+				Test som string. Kun for test av forbindelse </wsdl:documentation>
+			<wsdl:input message="tns:TestFunctionHttpGetIn" />
+			<wsdl:output message="tns:TestFunctionHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker login
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserLoginHttpGetIn" />
+			<wsdl:output message="tns:UserLoginHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mobil telefon
+				kontroll Step 1</wsdl:documentation>
+			<wsdl:input message="tns:UserCellphoneControl_1HttpGetIn" />
+			<wsdl:output message="tns:UserCellphoneControl_1HttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mobil telefon
+				kontroll Step 2</wsdl:documentation>
+			<wsdl:input message="tns:UserCellphoneControl_2HttpGetIn" />
+			<wsdl:output message="tns:UserCellphoneControl_2HttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker data
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserGetDataHttpGetIn" />
+			<wsdl:output message="tns:UserGetDataHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Innhold boligagent
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentDataHttpGetIn" />
+			<wsdl:output message="tns:AgentDataHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hente lagret søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentGetQueryHttpGetIn" />
+			<wsdl:output message="tns:AgentGetQueryHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Oppdater søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentQueryUpdateHttpGetIn" />
+			<wsdl:output message="tns:AgentQueryUpdateHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrer interesse
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentInteress_v2HttpGetIn" />
+			<wsdl:output message="tns:AgentInteress_v2HttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrer interesse
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentInteressHttpGetIn" />
+			<wsdl:output message="tns:AgentInteressHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Visninger
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentViewHttpGetIn" />
+			<wsdl:output message="tns:AgentViewHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Endre passord
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserPasswordHttpGetIn" />
+			<wsdl:output message="tns:UserPasswordHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send passord
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserSendPasswordHttpGetIn" />
+			<wsdl:output message="tns:UserSendPasswordHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker registrering
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserRegistrationHttpGetIn" />
+			<wsdl:output message="tns:UserRegistrationHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker registrering
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentSaveUserHttpGetIn" />
+			<wsdl:output message="tns:AgentSaveUserHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Slett søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:ClearSearchHttpGetIn" />
+			<wsdl:output message="tns:ClearSearchHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Upload url til fil
+				som skal lastes ned</wsdl:documentation>
+			<wsdl:input message="tns:UploadURLHttpGetIn" />
+			<wsdl:output message="tns:UploadURLHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Temporær metode for
+				kobling mellom baseident og oppdragsnr</wsdl:documentation>
+			<wsdl:input message="tns:TempLinkIDHttpGetIn" />
+			<wsdl:output message="tns:TempLinkIDHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søkekontroller og
+				verdier til disse</wsdl:documentation>
+			<wsdl:input message="tns:GetControlsHttpGetIn" />
+			<wsdl:output message="tns:GetControlsHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aktive bud
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetActiveBidHttpGetIn" />
+			<wsdl:output message="tns:GetActiveBidHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Selger informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:MyPropertyHttpGetIn" />
+			<wsdl:output message="tns:MyPropertyHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle kontorer i en
+				kjede</wsdl:documentation>
+			<wsdl:input message="tns:GetChainOfficesHttpGetIn" />
+			<wsdl:output message="tns:GetChainOfficesHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle kontorer i en
+				region</wsdl:documentation>
+			<wsdl:input message="tns:GetBaseOfficesHttpGetIn" />
+			<wsdl:output message="tns:GetBaseOfficesHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Megler informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetBrokerHttpGetIn" />
+			<wsdl:output message="tns:GetBrokerHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Megler informasjon
+				med bilde</wsdl:documentation>
+			<wsdl:input message="tns:GetBrokerPHttpGetIn" />
+			<wsdl:output message="tns:GetBrokerPHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kontor informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetOfficeHttpGetIn" />
+			<wsdl:output message="tns:GetOfficeHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kontor informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetOfficePHttpGetIn" />
+			<wsdl:output message="tns:GetOfficePHttpGetOut" />
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Wrapper for
+				RegisterInteress</wsdl:documentation>
+			<wsdl:input message="tns:wRegisterInteressHttpGetIn" />
+			<wsdl:output message="tns:wRegisterInteressHttpGetOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="wsData01HttpPost">
+		<wsdl:operation name="BaseProperty">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle eiendommer for
+				en base</wsdl:documentation>
+			<wsdl:input message="tns:BasePropertyHttpPostIn" />
+			<wsdl:output message="tns:BasePropertyHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer full
+				størrelse bilder til et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getPicturesHttpPostIn" />
+			<wsdl:output message="tns:getPicturesHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer bilder i
+				valgfri størrelse til et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getScaledPicturesHttpPostIn" />
+			<wsdl:output message="tns:getScaledPicturesHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Antall eiendommer
+				for en kjede</wsdl:documentation>
+			<wsdl:input message="tns:PropertyCountHttpPostIn" />
+			<wsdl:output message="tns:PropertyCountHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Antall endrede
+				eiendommer for en kjede</wsdl:documentation>
+			<wsdl:input message="tns:ChangedCountHttpPostIn" />
+			<wsdl:output message="tns:ChangedCountHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adder teller
+			</wsdl:documentation>
+			<wsdl:input message="tns:AddCounterHttpPostIn" />
+			<wsdl:output message="tns:AddCounterHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av søk
+				eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:SearchTestManualHttpPostIn" />
+			<wsdl:output message="tns:SearchTestManualHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av søk
+				eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:SearchTestHttpPostIn" />
+			<wsdl:output message="tns:SearchTestHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Test av lagre søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:SaveSearchTestHttpPostIn" />
+			<wsdl:output message="tns:SaveSearchTestHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall og kontorID (kommaseparert ved flere kontor)
+			</wsdl:documentation>
+			<wsdl:input message="tns:NewsTypeHttpPostIn" />
+			<wsdl:output message="tns:NewsTypeHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall, typer (kommaseparert), kontorID (kommaseparert ved
+				flere kontor), Antal Dager siden publisert/endret, 0 for publisert/1
+				for endret</wsdl:documentation>
+			<wsdl:input message="tns:NewsTypeDaysHttpPostIn" />
+			<wsdl:output message="tns:NewsTypeDaysHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Seneste eiendommer
+				- input Antall og kontorID (kommaseparert ved flere kontor)
+			</wsdl:documentation>
+			<wsdl:input message="tns:NewsHttpPostIn" />
+			<wsdl:output message="tns:NewsHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Et anntall
+				tilfeldige eiendommer</wsdl:documentation>
+			<wsdl:input message="tns:NewsRandomHttpPostIn" />
+			<wsdl:output message="tns:NewsRandomHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk endrede
+				eiendommer - input antall minutter</wsdl:documentation>
+			<wsdl:input message="tns:GetChangedHttpPostIn" />
+			<wsdl:output message="tns:GetChangedHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk endrede
+				eiendommer - input antall minutter</wsdl:documentation>
+			<wsdl:input message="tns:GetChangedBaseHttpPostIn" />
+			<wsdl:output message="tns:GetChangedBaseHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søk solgte
+				eiendommer - input antall dager</wsdl:documentation>
+			<wsdl:input message="tns:GetSoldHttpPostIn" />
+			<wsdl:output message="tns:GetSoldHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returnerer website
+				innstillinger</wsdl:documentation>
+			<wsdl:input message="tns:GetSiteSettingsHttpPostIn" />
+			<wsdl:output message="tns:GetSiteSettingsHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer xml dataset
+				for et enkelt oppdrag. Input IdentityKey og ProspektId
+			</wsdl:documentation>
+			<wsdl:input message="tns:getProspectDataDSHttpPostIn" />
+			<wsdl:output message="tns:getProspectDataDSHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Leverer xml streng
+				for et enkelt oppdrag.</wsdl:documentation>
+			<wsdl:input message="tns:getProspectDataXMLHttpPostIn" />
+			<wsdl:output message="tns:getProspectDataXMLHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returnerer verdien
+				Test som string. Kun for test av forbindelse </wsdl:documentation>
+			<wsdl:input message="tns:TestFunctionHttpPostIn" />
+			<wsdl:output message="tns:TestFunctionHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker login
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserLoginHttpPostIn" />
+			<wsdl:output message="tns:UserLoginHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mobil telefon
+				kontroll Step 1</wsdl:documentation>
+			<wsdl:input message="tns:UserCellphoneControl_1HttpPostIn" />
+			<wsdl:output message="tns:UserCellphoneControl_1HttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mobil telefon
+				kontroll Step 2</wsdl:documentation>
+			<wsdl:input message="tns:UserCellphoneControl_2HttpPostIn" />
+			<wsdl:output message="tns:UserCellphoneControl_2HttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker data
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserGetDataHttpPostIn" />
+			<wsdl:output message="tns:UserGetDataHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Innhold boligagent
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentDataHttpPostIn" />
+			<wsdl:output message="tns:AgentDataHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Hente lagret søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentGetQueryHttpPostIn" />
+			<wsdl:output message="tns:AgentGetQueryHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Oppdater søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentQueryUpdateHttpPostIn" />
+			<wsdl:output message="tns:AgentQueryUpdateHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrer interesse
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentInteress_v2HttpPostIn" />
+			<wsdl:output message="tns:AgentInteress_v2HttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registrer interesse
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentInteressHttpPostIn" />
+			<wsdl:output message="tns:AgentInteressHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Visninger
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentViewHttpPostIn" />
+			<wsdl:output message="tns:AgentViewHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Endre passord
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserPasswordHttpPostIn" />
+			<wsdl:output message="tns:UserPasswordHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send passord
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserSendPasswordHttpPostIn" />
+			<wsdl:output message="tns:UserSendPasswordHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker registrering
+			</wsdl:documentation>
+			<wsdl:input message="tns:UserRegistrationHttpPostIn" />
+			<wsdl:output message="tns:UserRegistrationHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Bruker registrering
+			</wsdl:documentation>
+			<wsdl:input message="tns:AgentSaveUserHttpPostIn" />
+			<wsdl:output message="tns:AgentSaveUserHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Slett søk
+			</wsdl:documentation>
+			<wsdl:input message="tns:ClearSearchHttpPostIn" />
+			<wsdl:output message="tns:ClearSearchHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Upload url til fil
+				som skal lastes ned</wsdl:documentation>
+			<wsdl:input message="tns:UploadURLHttpPostIn" />
+			<wsdl:output message="tns:UploadURLHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Temporær metode for
+				kobling mellom baseident og oppdragsnr</wsdl:documentation>
+			<wsdl:input message="tns:TempLinkIDHttpPostIn" />
+			<wsdl:output message="tns:TempLinkIDHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Søkekontroller og
+				verdier til disse</wsdl:documentation>
+			<wsdl:input message="tns:GetControlsHttpPostIn" />
+			<wsdl:output message="tns:GetControlsHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aktive bud
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetActiveBidHttpPostIn" />
+			<wsdl:output message="tns:GetActiveBidHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Selger informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:MyPropertyHttpPostIn" />
+			<wsdl:output message="tns:MyPropertyHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle kontorer i en
+				kjede</wsdl:documentation>
+			<wsdl:input message="tns:GetChainOfficesHttpPostIn" />
+			<wsdl:output message="tns:GetChainOfficesHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Alle kontorer i en
+				region</wsdl:documentation>
+			<wsdl:input message="tns:GetBaseOfficesHttpPostIn" />
+			<wsdl:output message="tns:GetBaseOfficesHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Megler informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetBrokerHttpPostIn" />
+			<wsdl:output message="tns:GetBrokerHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Megler informasjon
+				med bilde</wsdl:documentation>
+			<wsdl:input message="tns:GetBrokerPHttpPostIn" />
+			<wsdl:output message="tns:GetBrokerPHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kontor informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetOfficeHttpPostIn" />
+			<wsdl:output message="tns:GetOfficeHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Kontor informasjon
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetOfficePHttpPostIn" />
+			<wsdl:output message="tns:GetOfficePHttpPostOut" />
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Wrapper for
+				RegisterInteress</wsdl:documentation>
+			<wsdl:input message="tns:wRegisterInteressHttpPostIn" />
+			<wsdl:output message="tns:wRegisterInteressHttpPostOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="wsData01Soap" type="tns:wsData01Soap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="BaseProperty">
+			<soap:operation soapAction="http://emprof.no/BaseProperty"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<soap:operation soapAction="http://emprof.no/getPictures"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<soap:operation soapAction="http://emprof.no/getScaledPictures"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<soap:operation soapAction="http://emprof.no/PropertyCount"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<soap:operation soapAction="http://emprof.no/ChangedCount"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<soap:operation soapAction="http://emprof.no/AddCounter"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<soap:operation soapAction="http://emprof.no/SearchTestManual"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<soap:operation soapAction="http://emprof.no/SearchTest"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<soap:operation soapAction="http://emprof.no/SaveSearchTest"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<soap:operation soapAction="http://emprof.no/NewsType"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<soap:operation soapAction="http://emprof.no/NewsTypeDays"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<soap:operation soapAction="http://emprof.no/News"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<soap:operation soapAction="http://emprof.no/NewsRandom"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="Search">
+			<soap:operation soapAction="http://emprof.no/Search"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<soap:operation soapAction="http://emprof.no/GetChanged"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<soap:operation soapAction="http://emprof.no/GetChangedBase"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<soap:operation soapAction="http://emprof.no/GetSold"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<soap:operation soapAction="http://emprof.no/GetSiteSettings"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearch">
+			<soap:operation soapAction="http://emprof.no/SaveSearch"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<soap:operation soapAction="http://emprof.no/getProspectDataDS"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<soap:operation soapAction="http://emprof.no/getProspectDataXML"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<soap:operation soapAction="http://emprof.no/TestFunction"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<soap:operation soapAction="http://emprof.no/UserLogin"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<soap:operation soapAction="http://emprof.no/UserCellphoneControl_1"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<soap:operation soapAction="http://emprof.no/UserCellphoneControl_2"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<soap:operation soapAction="http://emprof.no/UserGetData"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<soap:operation soapAction="http://emprof.no/AgentData"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<soap:operation soapAction="http://emprof.no/AgentGetQuery"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<soap:operation soapAction="http://emprof.no/AgentQueryUpdate"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<soap:operation soapAction="http://emprof.no/AgentInteress_v2"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<soap:operation soapAction="http://emprof.no/AgentInteress"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<soap:operation soapAction="http://emprof.no/AgentView"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<soap:operation soapAction="http://emprof.no/UserPassword"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<soap:operation soapAction="http://emprof.no/UserSendPassword"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="BrokerMsg">
+			<soap:operation soapAction="http://emprof.no/BrokerMsg"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<soap:operation soapAction="http://emprof.no/UserRegistration"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<soap:operation soapAction="http://emprof.no/AgentSaveUser"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<soap:operation soapAction="http://emprof.no/ClearSearch"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<soap:operation soapAction="http://emprof.no/UploadURL"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<soap:operation soapAction="http://emprof.no/TempLinkID"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<soap:operation soapAction="http://emprof.no/GetControls"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<soap:operation soapAction="http://emprof.no/GetActiveBid"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<soap:operation soapAction="http://emprof.no/MyProperty"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<soap:operation soapAction="http://emprof.no/GetChainOffices"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<soap:operation soapAction="http://emprof.no/GetBaseOffices"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<soap:operation soapAction="http://emprof.no/GetBroker"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<soap:operation soapAction="http://emprof.no/GetBrokerP"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<soap:operation soapAction="http://emprof.no/GetOffice"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<soap:operation soapAction="http://emprof.no/GetOfficeP"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<soap:operation soapAction="http://emprof.no/wRegisterInteress"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterInteress">
+			<soap:operation soapAction="http://emprof.no/RegisterInteress"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="wsData01Soap12" type="tns:wsData01Soap">
+		<soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="BaseProperty">
+			<soap12:operation soapAction="http://emprof.no/BaseProperty"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<soap12:operation soapAction="http://emprof.no/getPictures"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<soap12:operation soapAction="http://emprof.no/getScaledPictures"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<soap12:operation soapAction="http://emprof.no/PropertyCount"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<soap12:operation soapAction="http://emprof.no/ChangedCount"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<soap12:operation soapAction="http://emprof.no/AddCounter"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<soap12:operation soapAction="http://emprof.no/SearchTestManual"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<soap12:operation soapAction="http://emprof.no/SearchTest"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<soap12:operation soapAction="http://emprof.no/SaveSearchTest"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<soap12:operation soapAction="http://emprof.no/NewsType"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<soap12:operation soapAction="http://emprof.no/NewsTypeDays"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<soap12:operation soapAction="http://emprof.no/News"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<soap12:operation soapAction="http://emprof.no/NewsRandom"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="Search">
+			<soap12:operation soapAction="http://emprof.no/Search"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<soap12:operation soapAction="http://emprof.no/GetChanged"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<soap12:operation soapAction="http://emprof.no/GetChangedBase"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<soap12:operation soapAction="http://emprof.no/GetSold"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<soap12:operation soapAction="http://emprof.no/GetSiteSettings"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearch">
+			<soap12:operation soapAction="http://emprof.no/SaveSearch"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<soap12:operation soapAction="http://emprof.no/getProspectDataDS"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<soap12:operation soapAction="http://emprof.no/getProspectDataXML"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<soap12:operation soapAction="http://emprof.no/TestFunction"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<soap12:operation soapAction="http://emprof.no/UserLogin"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<soap12:operation soapAction="http://emprof.no/UserCellphoneControl_1"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<soap12:operation soapAction="http://emprof.no/UserCellphoneControl_2"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<soap12:operation soapAction="http://emprof.no/UserGetData"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<soap12:operation soapAction="http://emprof.no/AgentData"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<soap12:operation soapAction="http://emprof.no/AgentGetQuery"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<soap12:operation soapAction="http://emprof.no/AgentQueryUpdate"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<soap12:operation soapAction="http://emprof.no/AgentInteress_v2"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<soap12:operation soapAction="http://emprof.no/AgentInteress"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<soap12:operation soapAction="http://emprof.no/AgentView"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<soap12:operation soapAction="http://emprof.no/UserPassword"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<soap12:operation soapAction="http://emprof.no/UserSendPassword"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="BrokerMsg">
+			<soap12:operation soapAction="http://emprof.no/BrokerMsg"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<soap12:operation soapAction="http://emprof.no/UserRegistration"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<soap12:operation soapAction="http://emprof.no/AgentSaveUser"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<soap12:operation soapAction="http://emprof.no/ClearSearch"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<soap12:operation soapAction="http://emprof.no/UploadURL"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<soap12:operation soapAction="http://emprof.no/TempLinkID"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<soap12:operation soapAction="http://emprof.no/GetControls"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<soap12:operation soapAction="http://emprof.no/GetActiveBid"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<soap12:operation soapAction="http://emprof.no/MyProperty"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<soap12:operation soapAction="http://emprof.no/GetChainOffices"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<soap12:operation soapAction="http://emprof.no/GetBaseOffices"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<soap12:operation soapAction="http://emprof.no/GetBroker"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<soap12:operation soapAction="http://emprof.no/GetBrokerP"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<soap12:operation soapAction="http://emprof.no/GetOffice"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<soap12:operation soapAction="http://emprof.no/GetOfficeP"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<soap12:operation soapAction="http://emprof.no/wRegisterInteress"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterInteress">
+			<soap12:operation soapAction="http://emprof.no/RegisterInteress"
+				style="document" />
+			<wsdl:input>
+				<soap12:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="wsData01HttpGet" type="tns:wsData01HttpGet">
+		<http:binding verb="GET" />
+		<wsdl:operation name="BaseProperty">
+			<http:operation location="/BaseProperty" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<http:operation location="/getPictures" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<http:operation location="/getScaledPictures" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<http:operation location="/PropertyCount" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<http:operation location="/ChangedCount" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<http:operation location="/AddCounter" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<http:operation location="/SearchTestManual" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<http:operation location="/SearchTest" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<http:operation location="/SaveSearchTest" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<http:operation location="/NewsType" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<http:operation location="/NewsTypeDays" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<http:operation location="/News" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<http:operation location="/NewsRandom" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<http:operation location="/GetChanged" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<http:operation location="/GetChangedBase" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<http:operation location="/GetSold" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<http:operation location="/GetSiteSettings" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<http:operation location="/getProspectDataDS" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<http:operation location="/getProspectDataXML" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<http:operation location="/TestFunction" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<http:operation location="/UserLogin" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<http:operation location="/UserCellphoneControl_1" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<http:operation location="/UserCellphoneControl_2" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<http:operation location="/UserGetData" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<http:operation location="/AgentData" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<http:operation location="/AgentGetQuery" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<http:operation location="/AgentQueryUpdate" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<http:operation location="/AgentInteress_v2" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<http:operation location="/AgentInteress" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<http:operation location="/AgentView" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<http:operation location="/UserPassword" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<http:operation location="/UserSendPassword" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<http:operation location="/UserRegistration" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<http:operation location="/AgentSaveUser" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<http:operation location="/ClearSearch" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<http:operation location="/UploadURL" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<http:operation location="/TempLinkID" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<http:operation location="/GetControls" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<http:operation location="/GetActiveBid" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<http:operation location="/MyProperty" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<http:operation location="/GetChainOffices" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<http:operation location="/GetBaseOffices" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<http:operation location="/GetBroker" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<http:operation location="/GetBrokerP" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<http:operation location="/GetOffice" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<http:operation location="/GetOfficeP" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<http:operation location="/wRegisterInteress" />
+			<wsdl:input>
+				<http:urlEncoded />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="wsData01HttpPost" type="tns:wsData01HttpPost">
+		<http:binding verb="POST" />
+		<wsdl:operation name="BaseProperty">
+			<http:operation location="/BaseProperty" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPictures">
+			<http:operation location="/getPictures" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getScaledPictures">
+			<http:operation location="/getScaledPictures" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PropertyCount">
+			<http:operation location="/PropertyCount" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ChangedCount">
+			<http:operation location="/ChangedCount" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AddCounter">
+			<http:operation location="/AddCounter" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTestManual">
+			<http:operation location="/SearchTestManual" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SearchTest">
+			<http:operation location="/SearchTest" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SaveSearchTest">
+			<http:operation location="/SaveSearchTest" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsType">
+			<http:operation location="/NewsType" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsTypeDays">
+			<http:operation location="/NewsTypeDays" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="News">
+			<http:operation location="/News" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="NewsRandom">
+			<http:operation location="/NewsRandom" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChanged">
+			<http:operation location="/GetChanged" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedBase">
+			<http:operation location="/GetChangedBase" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSold">
+			<http:operation location="/GetSold" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSiteSettings">
+			<http:operation location="/GetSiteSettings" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataDS">
+			<http:operation location="/getProspectDataDS" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProspectDataXML">
+			<http:operation location="/getProspectDataXML" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TestFunction">
+			<http:operation location="/TestFunction" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserLogin">
+			<http:operation location="/UserLogin" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_1">
+			<http:operation location="/UserCellphoneControl_1" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserCellphoneControl_2">
+			<http:operation location="/UserCellphoneControl_2" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserGetData">
+			<http:operation location="/UserGetData" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentData">
+			<http:operation location="/AgentData" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentGetQuery">
+			<http:operation location="/AgentGetQuery" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentQueryUpdate">
+			<http:operation location="/AgentQueryUpdate" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress_v2">
+			<http:operation location="/AgentInteress_v2" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentInteress">
+			<http:operation location="/AgentInteress" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentView">
+			<http:operation location="/AgentView" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserPassword">
+			<http:operation location="/UserPassword" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserSendPassword">
+			<http:operation location="/UserSendPassword" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UserRegistration">
+			<http:operation location="/UserRegistration" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="AgentSaveUser">
+			<http:operation location="/AgentSaveUser" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ClearSearch">
+			<http:operation location="/ClearSearch" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UploadURL">
+			<http:operation location="/UploadURL" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="TempLinkID">
+			<http:operation location="/TempLinkID" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetControls">
+			<http:operation location="/GetControls" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetActiveBid">
+			<http:operation location="/GetActiveBid" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="MyProperty">
+			<http:operation location="/MyProperty" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChainOffices">
+			<http:operation location="/GetChainOffices" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBaseOffices">
+			<http:operation location="/GetBaseOffices" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBroker">
+			<http:operation location="/GetBroker" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetBrokerP">
+			<http:operation location="/GetBrokerP" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOffice">
+			<http:operation location="/GetOffice" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetOfficeP">
+			<http:operation location="/GetOfficeP" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wRegisterInteress">
+			<http:operation location="/wRegisterInteress" />
+			<wsdl:input>
+				<mime:content type="application/x-www-form-urlencoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<mime:mimeXml part="Body" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="wsData01">
+		<wsdl:port name="wsData01Soap" binding="tns:wsData01Soap">
+			<soap:address location="http://data.emprof.no/wsData01.asmx" />
+		</wsdl:port>
+		<wsdl:port name="wsData01Soap12" binding="tns:wsData01Soap12">
+			<soap12:address location="http://data.emprof.no/wsData01.asmx" />
+		</wsdl:port>
+		<wsdl:port name="wsData01HttpGet" binding="tns:wsData01HttpGet">
+			<http:address location="http://data.emprof.no/wsData01.asmx" />
+		</wsdl:port>
+		<wsdl:port name="wsData01HttpPost" binding="tns:wsData01HttpPost">
+			<http:address location="http://data.emprof.no/wsData01.asmx" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

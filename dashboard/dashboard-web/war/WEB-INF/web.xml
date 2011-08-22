@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="BrDB" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Broker dashboard</display-name>
+
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>about.do</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		classpath:applicationContext.xml
+		classpath:applicationContext-security.xml
+		</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>gwtCacheControlFilter</filter-name>
+		<filter-class>com.dmma.base.gwt.server.cachecontrol.GWTCacheControlFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>gwtCacheControlFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>webAppDispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webAppDispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<!-- Base Servlets -->
+	<servlet>
+		<servlet-name>clientContextGWTServlet</servlet-name>
+		<servlet-class>com.dmma.base.gwt.server.services.ClientContextGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>clientContextGWTServlet</servlet-name>
+		<url-pattern>/Broker/ClientContextGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>clientContextGWTServlet</servlet-name>
+		<url-pattern>/Banker/ClientContextGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>clientContextGWTServlet</servlet-name>
+		<url-pattern>/Admin/ClientContextGWTService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>mailGWTServlet</servlet-name>
+		<servlet-class>com.dmma.base.gwt.server.services.MailGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mailGWTServlet</servlet-name>
+		<url-pattern>/Banker/MailGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>mailGWTServlet</servlet-name>
+		<url-pattern>/Admin/MailGWTService</url-pattern>
+	</servlet-mapping>
+	
+
+	<!-- User Servlet -->
+	<servlet>
+		<servlet-name>userGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.UserGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>userGWTServlet</servlet-name>
+		<url-pattern>/Broker/UserGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>userGWTServlet</servlet-name>
+		<url-pattern>/Banker/UserGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>userGWTServlet</servlet-name>
+		<url-pattern>/Admin/UserGWTService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Client Servlet -->
+	<servlet>
+		<servlet-name>clientGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.ClientGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>clientGWTServlet</servlet-name>
+		<url-pattern>/Broker/ClientGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>clientGWTServlet</servlet-name>
+		<url-pattern>/Banker/ClientGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>clientGWTServlet</servlet-name>
+		<url-pattern>/Admin/ClientGWTService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Broker Office GWT Servlets -->
+	<servlet>
+		<servlet-name>brokerOfficeGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.BrokerOfficeGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>brokerOfficeGWTServlet</servlet-name>
+		<url-pattern>/Broker/BrokerOfficeGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>brokerOfficeGWTServlet</servlet-name>
+		<url-pattern>/Banker/BrokerOfficeGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>brokerOfficeGWTServlet</servlet-name>
+		<url-pattern>/Admin/BrokerOfficeGWTService</url-pattern>
+	</servlet-mapping>
+	<!-- Broker GWT Servlets -->
+	<servlet>
+		<servlet-name>brokerGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.BrokerGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>brokerGWTServlet</servlet-name>
+		<url-pattern>/Broker/BrokerGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>brokerGWTServlet</servlet-name>
+		<url-pattern>/Banker/BrokerGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>brokerGWTServlet</servlet-name>
+		<url-pattern>/Admin/BrokerGWTService</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Bank Office GWT Servlets -->
+	<servlet>
+		<servlet-name>bankOfficeGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.BankOfficeGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bankOfficeGWTServlet</servlet-name>
+		<url-pattern>/Broker/BankOfficeGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>bankOfficeGWTServlet</servlet-name>
+		<url-pattern>/Banker/BankOfficeGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>bankOfficeGWTServlet</servlet-name>
+		<url-pattern>/Admin/BankOfficeGWTService</url-pattern>
+	</servlet-mapping>
+	<!-- Banker GWT Servlets -->
+	<servlet>
+		<servlet-name>bankerGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.BankerGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bankerGWTServlet</servlet-name>
+		<url-pattern>/Broker/BankerGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>bankerGWTServlet</servlet-name>
+		<url-pattern>/Banker/BankerGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>bankerGWTServlet</servlet-name>
+		<url-pattern>/Admin/BankerGWTService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Estate GWT Servlets -->
+	<servlet>
+		<servlet-name>estateGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.EstateGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>estateGWTServlet</servlet-name>
+		<url-pattern>/Broker/EstateGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>estateGWTServlet</servlet-name>
+		<url-pattern>/Banker/EstateGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>estateGWTServlet</servlet-name>
+		<url-pattern>/Admin/EstateGWTService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Tip GWT Servlets -->
+	<servlet>
+		<servlet-name>tipGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.TipGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>tipGWTServlet</servlet-name>
+		<url-pattern>/Broker/TipGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>tipGWTServlet</servlet-name>
+		<url-pattern>/Banker/TipGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>tipGWTServlet</servlet-name>
+		<url-pattern>/Admin/TipGWTService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Have To Sell GWT Servlets -->
+	<servlet>
+		<servlet-name>haveToSellGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.HaveToSellGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>haveToSellGWTServlet</servlet-name>
+		<url-pattern>/Broker/HaveToSellGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>haveToSellGWTServlet</servlet-name>
+		<url-pattern>/Banker/HaveToSellGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>haveToSellGWTServlet</servlet-name>
+		<url-pattern>/Admin/HaveToSellGWTService</url-pattern>
+	</servlet-mapping>
+
+	<!-- Clien Visit GWT Servlets -->
+	<servlet>
+		<servlet-name>clientVisitGWTServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.gwt.core.server.services.ClientVisitGWTServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>clientVisitGWTServlet</servlet-name>
+		<url-pattern>/Broker/ClientVisitGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>clientVisitGWTServlet</servlet-name>
+		<url-pattern>/Banker/ClientVisitGWTService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>clientVisitGWTServlet</servlet-name>
+		<url-pattern>/Admin/ClientVisitGWTService</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- JCaptcha -->
+	<servlet>
+		<servlet-name>jcaptcha</servlet-name>
+		<servlet-class>com.octo.captcha.module.servlet.image.SimpleImageCaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jcaptcha</servlet-name>
+		<url-pattern>/jcaptcha.jpg</url-pattern>
+	</servlet-mapping>
+
+	<!-- PDF visit planner -->
+	<servlet>
+		<servlet-name>clientVisitPlannerPDFServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.app.servlets.ClientVisitPlannerPDFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>clientVisitPlannerPDFServlet</servlet-name>
+		<url-pattern>/ClientVisitPlannerPDF</url-pattern>
+	</servlet-mapping>
+
+	<!-- XML visit planner -->
+	<servlet>
+		<servlet-name>clientVisitPlannerXMLServlet</servlet-name>
+		<servlet-class>com.dmma.dashboard.app.servlets.ClientVisitPlannerXMLServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>clientVisitPlannerXMLServlet</servlet-name>
+		<url-pattern>/ClientVisitPlannerXML</url-pattern>
+	</servlet-mapping>
+
+
+
+</web-app>

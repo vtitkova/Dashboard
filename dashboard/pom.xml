@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>no.dmma.em1</groupId>
+	<packaging>pom</packaging>
+	<artifactId>dashboard</artifactId>
+	<version>1.0</version>
+	<name>Broker Dashboard</name>
+
+	<prerequisites>
+		<maven>2.2.1</maven>
+	</prerequisites>
+	
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>constretto.org</id>
+			<name>Constretto public maven repository</name>
+			<url>http://repo.constretto.org/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>JBoss-Maven-Repository</id>
+			<name>JBoss Maven Repository</name>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+		<repository>
+			<id>jcaptcha-integration-simple-servlet-sample</id>
+			<name>Sonatype Sourceforge Nexus Maven Repository</name>
+			<url>http://oss.sonatype.org/content/groups/sourceforge</url>
+		</repository>
+		<repository>
+			<id>google-web-toolkit</id>
+			<url>http://google-web-toolkit.googlecode.com/svn/2.1.0/gwt/maven</url>
+		</repository>
+		
+	</repositories>
+	<modules>
+		<module>dmma-base-app</module>
+		<module>dmma-base-gwt</module>
+		<module>dashboard-core</module>
+		<module>dashboard-midas</module>
+		<module>dashboard-web</module>
+	</modules>
+
+
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.source>1.6</jdk.source>
+		<jdk.target>1.6</jdk.target>
+		<spring.version>3.0.3.RELEASE</spring.version>
+		<springsecurity.version>3.0.3.RELEASE</springsecurity.version>
+		<hibernate.version>3.5.0-Final</hibernate.version>
+		<mysqlconnector.version>5.1.13</mysqlconnector.version>
+		<slf4j.version>1.5.11</slf4j.version>
+		<junit.version>4.7</junit.version>
+		<gwt.version>2.3.0</gwt.version>
+		<gwtplugin.version>2.2.0</gwtplugin.version>
+	</properties>
+
+	<build>
+		<plugins>
+
+	        <!-- plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<wtpversion>1.5</wtpversion>
+				</configuration>
+			</plugin-->
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.source}</source>
+					<target>${jdk.target}</target>
+					<encoding>UTF-8</encoding>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	
+	<dependencies>
+		<!-- minimal set of dependencies for standard enterprice web application  -->
+
+		<!-- ***************************** SPRING ***************************** -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- ***************************** SPRING SECURITY ***************************** -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
+
+		<!-- ***************************** HIBERNATE ***************************** -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+        	<groupId>org.hibernate</groupId>
+        	<artifactId>hibernate-c3p0</artifactId>
+        	<version>${hibernate.version}</version>
+    	</dependency>
+		<dependency>
+        	<groupId>org.hibernate</groupId>
+        	<artifactId>hibernate-validator</artifactId>
+        	<version>4.1.0.Final</version>
+    	</dependency>
+		
+
+		<!-- ***************************** MySQL ***************************** -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysqlconnector.version}</version>
+		</dependency>
+
+		<!-- ***************************** Captcha ***************************** -->
+		<dependency>
+			<groupId>com.octo.captcha</groupId>
+			<artifactId>jcaptcha-integration-simple-servlet</artifactId>
+			<version>2.0-alpha-1</version>
+		</dependency>
+		
+		<!-- ************************** Constretto *************************** -->
+		<dependency>
+			<groupId>org.constretto</groupId>
+			<artifactId>constretto-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.constretto</groupId>
+			<artifactId>constretto-core</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+
+		<!-- ***************************** Other ***************************** -->
+		<dependency>
+        	<groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+	</dependencies>
+		
+	
+</project>

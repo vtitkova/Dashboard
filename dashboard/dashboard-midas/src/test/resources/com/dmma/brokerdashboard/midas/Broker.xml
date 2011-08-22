@@ -1,0 +1,15 @@
+<diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+	xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+	<dsBI xmlns="">
+		<dtBroker diffgr:id="dtBroker1" msdata:rowOrder="0">
+			<ID>12660</ID>
+			<Name>Ole Jimmy Sortebr&#xE5;ten</Name>
+			<Title>Megler MNEF / Daglig leder</Title>
+			<Phone>32 02 99 00</Phone>
+			<CellPhone>90 66 10 20</CellPhone>
+			<EMail>ole@em1hallingdal.no </EMail>
+			<EmailPersonal>ole@em1hallingdal.no </EmailPersonal>
+			<Initials>OJSO</Initials>
+		</dtBroker>
+	</dsBI>
+</diffgr:diffgram>

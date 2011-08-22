@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:bean="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/security
+  http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+	<http>
+		<intercept-url pattern="/dummy*"            access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/getChanged.do"     access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/jcaptcha.jpg"      access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/accdenied.do"      access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/login.do"          access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/brokerRegistration*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/about.do"          access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	 	<intercept-url pattern="/css/*"             access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	 	<intercept-url pattern="/favicon.ico"       access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	 	<intercept-url pattern="/include/*"         access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	 	
+	 	<intercept-url pattern="/ClientVisitPlannerPDF*"        access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	 	<intercept-url pattern="/ClientVisitPlannerXML*"        access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	 	
+		<intercept-url pattern="/admin.do"   access="ROLE_ADMIN"  />
+		<intercept-url pattern="/broker.do"  access="ROLE_BROKER" />
+		<intercept-url pattern="/banker.do"  access="ROLE_BANKER" />
+		<intercept-url pattern="/client.do"  access="ROLE_CLIENT" />
+		<intercept-url pattern="/*"          access="ROLE_ADMIN, ROLE_BROKER, ROLE_BANKER, ROLE_CLIENT" />
+		
+		<form-login login-page="/login.do" 
+					default-target-url="/dashboard.do"
+					always-use-default-target="true" />
+		<logout logout-success-url="/login.do" />
+	</http>
+
+	<bean:bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener" />
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="mySecurityUserDetailsService"/>
+	</authentication-manager>
+
+
+</bean:beans>
+
+
+	<!--authentication-manager>
+		<authentication-provider>
+			- user-service>
+				<user name="u"   authorities="ROLE_USER"  password="u" />
+				<user name="a"   authorities="ROLE_ADMIN" password="a" />
+			</user-service -
+			
+			<jdbc-user-service data-source-ref="dataSource"
+			users-by-username-query="select midasId username, password, enabled, name title from  broker where midasId = ?"
+			authorities-by-username-query="select username, authority from  userrole where username = ?"
+			/>
+		</authentication-provider>
+	</authentication-manager-->
+
+
+
+
+

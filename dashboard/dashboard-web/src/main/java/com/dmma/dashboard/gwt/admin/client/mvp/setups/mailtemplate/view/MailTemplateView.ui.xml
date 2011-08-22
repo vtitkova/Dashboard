@@ -1,0 +1,36 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui' 
+             xmlns:myRTE='urn:import:com.dmma.base.gwt.client.ui.rte' >
+    <g:HTMLPanel>
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><g:ListBox ui:field="nameLB"></g:ListBox></td>
+				</tr>
+			</table>
+			<hr/>
+			<g:HTMLPanel ui:field="mailPanelContainer">
+				<table>
+					<tr>
+						<td>Available TAGS:</td>
+						<td><g:HTML ui:field="availableTags"/></td>
+					</tr>
+					<tr>
+						<td>Header</td>
+						<td><g:TextBox ui:field="headerTB" /></td>
+					</tr>
+					<tr>
+						<td>Body</td>
+						<td><myRTE:RichTextEditor ui:field="bodyRT"/></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><g:Button ui:field="saveButton" text="SSSave"></g:Button></td>
+					</tr>
+				</table>
+			</g:HTMLPanel>
+			<g:HTMLPanel ui:field="loadingPanelContainer">
+				Loading ...
+			</g:HTMLPanel>
+    </g:HTMLPanel>
+</ui:UiBinder>

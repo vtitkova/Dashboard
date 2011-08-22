@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+    <description>Description of the Chain Offices mapping</description>
+    <class name="com.dmma.dashboard.midas.dto.RootXMLElement">
+        <map-to xml="diffgram"></map-to>
+        <field name="getEstatesByOfficeIdSearchResult" type="com.dmma.dashboard.midas.dto.GetEstatesByOfficeIdXMLElement" direct="true">
+             <bind-xml name="dsSearchResult"/>
+        </field>
+    </class>
+
+    <class name="com.dmma.dashboard.midas.dto.GetEstatesByOfficeIdXMLElement">
+        <map-to xml="dsSearchResult"></map-to>
+        <field name="result" type="com.dmma.dashboard.midas.dto.GetEstateSearchResultDTO" collection="arraylist" direct="true">
+             <bind-xml name="dtResult"/>
+        </field>
+    </class>
+    <class name="com.dmma.dashboard.midas.dto.GetEstateSearchResultDTO">
+        <field name="estateId" type="java.lang.Long" direct="true">
+             <bind-xml name="ID" node="element"/>
+        </field>
+    </class>
+</mapping>

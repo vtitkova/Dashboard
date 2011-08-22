@@ -1,0 +1,40 @@
+<diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+	xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+	<dsOI xmlns="">
+		<dtOffice diffgr:id="dtOffice1" msdata:rowOrder="0">
+			<ChainName>Eiendomsmegler 1</ChainName>
+			<ChainDisplayName />
+			<BaseName>EM1 Ringerike</BaseName>
+			<BaseDisplayName>EiendomsMegler 1</BaseDisplayName>
+			<ID>11</ID>
+			<BaseID>4</BaseID>
+			<ChainID>8</ChainID>
+			<EmprofID>3</EmprofID>
+			<EmpIDOld>0</EmpIDOld>
+			<Name>Gol</Name>
+			<PicturePath>Gol</PicturePath>
+			<DisplayName>Eiendomsmegler 1 Hallingdal</DisplayName>
+			<Active>true</Active>
+			<Adress>Sentrumsvegen 79, PB 33 Sentrumsvegen 79, PB 33</Adress>
+			<Zip>3550</Zip>
+			<City>GOL</City>
+			<Phone>32 02 99 00</Phone>
+			<Fax>32 02 99 01</Fax>
+			<EMail>em1@em1hallingdal.no</EMail>
+			<MapX />
+			<MapY />
+			<ManualMap>false</ManualMap>
+			<AdressConc>Gol Sentrumsvegen 79, PB 33 Sentrumsvegen 79, PB 33 3550
+				GOL</AdressConc>
+			<LocationID>0</LocationID>
+			<AlternateMail>em1@em1hallingdal.no</AlternateMail>
+			<MailCount>0</MailCount>
+			<LegalName>Eiendomsmegleren Ringerike Hadeland AS</LegalName>
+			<CompanyNo>953376040</CompanyNo>
+			<VisitingAdress xml:space="preserve"> </VisitingAdress>
+			<Exclude>0</Exclude>
+			<WebName>GOL                           </WebName>
+			<UniqueID>3c33a831-dc83-4248-8f4b-ee8ca10ed539</UniqueID>
+		</dtOffice>
+	</dsOI>
+</diffgr:diffgram>

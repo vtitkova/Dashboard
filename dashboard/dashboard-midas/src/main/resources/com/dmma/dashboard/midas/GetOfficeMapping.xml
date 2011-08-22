@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+	<description>Description of the Office mapping</description>
+	<class name="com.dmma.dashboard.midas.dto.RootXMLElement">
+		<map-to xml="diffgram"></map-to>
+		<field name="getOfficeResult" type="com.dmma.dashboard.midas.dto.GetOfficeXMLElement" direct="true">
+			<bind-xml name="dsOI" />
+		</field>
+	</class>
+
+	<class name="com.dmma.dashboard.midas.dto.GetOfficeXMLElement">
+		<map-to xml="dsOI"></map-to>
+		<field name="result" type="com.dmma.dashboard.midas.dto.GetOfficeDTO" direct="true">
+			<bind-xml name="dtOffice" />
+		</field>
+	</class>
+	<class name="com.dmma.dashboard.midas.dto.GetOfficeDTO">
+		<field name="officeId" type="java.lang.Long" direct="true">
+			<bind-xml name="ID" node="element" />
+		</field>
+		<field name="name" type="java.lang.String" direct="true">
+			<bind-xml name="Name" node="element" />
+		</field>
+		<field name="address" type="java.lang.String" direct="true">
+			<bind-xml name="Adress" node="element" />
+		</field>
+		<field name="zip" type="java.lang.String" direct="true">
+			<bind-xml name="Zip" node="element" />
+		</field>
+		<field name="city" type="java.lang.String" direct="true">
+			<bind-xml name="City" node="element" />
+		</field>
+		<field name="phone" type="java.lang.String" direct="true">
+			<bind-xml name="Phone" node="element" />
+		</field>
+		<field name="fax" type="java.lang.String" direct="true">
+			<bind-xml name="Fax" node="element" />
+		</field>
+		<field name="email" type="java.lang.String" direct="true">
+			<bind-xml name="EMail" node="element" />
+		</field>
+		<field name="legalName" type="java.lang.String" direct="true">
+			<bind-xml name="LegalName" node="element" />
+		</field>
+		<field name="displayName" type="java.lang.String" direct="true">
+			<bind-xml name="DisplayName" node="element" />
+		</field>
+		<field name="visitingAddress" type="java.lang.String" direct="true">
+			<bind-xml name="VisitingAdress" node="element" />
+		</field>
+		<field name="x" type="java.lang.String" direct="true">
+			<bind-xml name="X" node="element" />
+		</field>
+		<field name="y" type="java.lang.String" direct="true">
+			<bind-xml name="Y" node="element" />
+		</field>
+	</class>
+</mapping>

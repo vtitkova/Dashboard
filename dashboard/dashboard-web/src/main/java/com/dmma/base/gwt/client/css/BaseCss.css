@@ -1,0 +1,45 @@
+.dialogImage {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.dialogVPanel {
+	margin: 5px;
+}
+
+
+/* loading popup */
+.baseLoadingPopup {
+	border: 1px solid #CCCCCC;
+}
+
+.baseLoadingImage {
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.baseLoadingCaption {
+	width: 100px;
+	color: #444444;
+	font: bold 13px tahoma, arial, helvetica;
+}
+
+.baseLoadingMsg{
+	color: #444444;
+	font: 10px arial, tahoma, sans-serif;
+}
+
+
+/* centered element*/
+.autoMargin{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* tables */
+.tableHeader {
+	font-weight: bold;
+	background: #C6CCD2;
+}
+
+

@@ -1,0 +1,68 @@
+.em1Logo{
+	display: block;
+	float: left;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+}
+
+.tableVithVersion{
+	margin-left: 140px;
+}
+
+
+.Application-top {
+	margin-bottom: 3px;
+	background: none repeat scroll 0 0 #C3D9FF;
+	font-size: small;
+}
+
+.Application-top tr td {
+	vertical-align: top;
+	padding:        0;
+	font-family:    Arial Unicode MS,Arial,sans-serif;
+}
+
+.App-version {
+	color: #CCCCCC;
+}
+
+.App-language, .App-language a {
+	color: #4E4D50;
+}
+.App-language a:visited, .App-language a:hover {
+	color: #4E4D50;
+}
+
+.formEerror{
+	color: RED;
+	padding-left:10px;
+}
+
+.inOneRow{
+	clear: both;
+	height: 50px;
+}
+.inOneRow div{
+	float: left;
+	margin-left: 10px; 
+}
+
+.registrationConfirmation tr td dl{
+	width: 420px;
+}
+.registrationConfirmation tr td dl dt{
+	font-weight:bold;
+	clear: both;
+	float: left;
+	width: 100px;
+}
+.registrationConfirmation tr td dl dd{
+	margin-left: 100px;
+}
+
+
+.pastPartViewWarning{
+	background: url(../img/warning_22.png) no-repeat scroll 175px;
+	width: 210px;
+}

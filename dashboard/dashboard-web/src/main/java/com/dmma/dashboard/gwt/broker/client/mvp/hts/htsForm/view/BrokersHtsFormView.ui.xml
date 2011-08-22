@@ -1,0 +1,53 @@
+<ui:UiBinder 	xmlns:ui='urn:ui:com.google.gwt.uibinder'
+				xmlns:g='urn:import:com.google.gwt.user.client.ui' >
+	
+	<ui:with field='msg' type='com.dmma.dashboard.gwt.core.client.i18n.DashboardMessages' />
+
+	<g:HTMLPanel>
+		<g:FlexTable ui:field="loadingContainer" />
+		<g:HTMLPanel ui:field="mainContainer">
+			<table class="">
+				<tr>
+					<td><g:Label text="{msg.id}" /></td>
+					<td><g:Label ui:field="idLabel"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><g:Label ui:field="reminderLabel" styleName="actionWrap highlitable"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="{msg.client}" /></td>
+					<td><g:Label styleName="actionWrap highlitable" ui:field="clientLabel" /></td>
+				</tr>
+				<tr>
+					<td><g:Label text="ActiveFrom" /></td>
+					<td><g:Label ui:field="activeFrom" /></td>
+				</tr>
+				<tr>
+					<td><g:Label ui:field="wasOnVisitCaption" text="Was On Visit " /></td>
+					<td><g:Label ui:field="wasOnVisitEstate" styleName="actionWrap highlitable"/><g:Label ui:field="wasOnVisitTime"/> </td>
+				</tr>
+				<tr>
+					<td><g:Label ui:field="defBrokerCaption" text="Lazy Broker" /></td>
+					<td><g:Label ui:field="defBroker" styleName="actionWrap highlitable"/></td>
+				</tr>
+				<tr>
+					<td><g:Label text="{msg.comments}" /></td>
+					<td><g:TextArea ui:field="commentsTA" /></td>
+				</tr>
+				<tr>
+					<td><g:Label text="{msg.wantToSell}" /></td>
+					<td><g:RadioButton  ui:field="wtsYes" name="wtsRB" />Yes</td>
+					<td><g:RadioButton  ui:field="wtsNo"  name="wtsRB"/>No</td>
+				</tr>
+			</table>
+			<table class="table_data_padding_20">
+				<tr>
+					<td>
+						<g:Button ui:field="saveButton" text="{msg.save}" />
+					</td>
+				</tr>
+			</table>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>

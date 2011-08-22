@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' 
+             xmlns:g ='urn:import:com.google.gwt.user.client.ui'>
+  <g:HTMLPanel>
+    <table class = "" cellpadding="0" cellspacing="0" border="0">
+    	<tr>
+    		<td><g:Button     ui:field = "saveButton"/></td>
+    		<td><g:InlineHTML ui:field = "cancelButton"/></td>
+    	</tr>
+    </table>
+  </g:HTMLPanel>
+</ui:UiBinder>

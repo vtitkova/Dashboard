@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/tx 
+                           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+	<bean id="dataSource" class="com.dmma.dashboard.core.configuration.ApplicationDataSource" destroy-method="close">
+	</bean>
+		
+	<bean id="mailServerConfigurator" class="com.dmma.dashboard.core.configuration.MailServerConfiguratorImpl" />
+	
+	<!-- HIBERNATE SESSION FACTORY -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configurationClass" value="com.dmma.dashboard.core.configuration.ApplicationConfiguration" />
+	</bean>
+
+
+	<!-- All beans that handles business logic -->
+	
+	<!-- DAOs -->
+	<bean id="userDao"          class="com.dmma.dashboard.core.daos.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="userRoleDao"      class="com.dmma.dashboard.core.daos.UserRoleDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="brokerOfficeDao"  class="com.dmma.dashboard.core.daos.BrokerOfficeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="brokerDao"        class="com.dmma.dashboard.core.daos.BrokerDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="bankOfficeDao"    class="com.dmma.dashboard.core.daos.BankOfficeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="bankerDao"        class="com.dmma.dashboard.core.daos.BankerDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="estateDao"        class="com.dmma.dashboard.core.daos.EstateDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="estateViewingDao" class="com.dmma.dashboard.core.daos.EstateViewingDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="clientDao"        class="com.dmma.dashboard.core.daos.ClientDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="tipDao"           class="com.dmma.dashboard.core.daos.TipDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="haveToSellDao"    class="com.dmma.dashboard.core.daos.HaveToSellDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="clientVisitDao"   class="com.dmma.dashboard.core.daos.ClientVisitDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="mailTemplateDao"   class="com.dmma.base.app.mail.daos.MailTemplateDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="mailDao"   class="com.dmma.base.app.mail.daos.MailDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- end DAOs -->
+	
+	
+	<!-- Services -->
+	<bean id="userService"         class="com.dmma.dashboard.core.services.UserService">
+		<property name="userDao" ref="userDao"/>
+	</bean>
+	<bean id="userRoleService"     class="com.dmma.dashboard.core.services.UserRoleService">
+		<property name="userRoleDao" ref="userRoleDao"/>
+	</bean>
+	<bean id="brokerOfficeService" class="com.dmma.dashboard.core.services.BrokerOfficeService">
+		<property name="brokerOfficeDao" ref="brokerOfficeDao"/>
+	</bean>
+	<bean id="brokerService"       class="com.dmma.dashboard.core.services.BrokerService">
+		<property name="brokerDao"   ref="brokerDao"/>
+		<property name="userDao"     ref="userDao"/>
+		<property name="userRoleDao" ref="userRoleDao"/>
+		<property name="brokerOfficeDao" ref="brokerOfficeDao"/>
+	</bean>
+	<bean id="bankOfficeService"   class="com.dmma.dashboard.core.services.BankOfficeService">
+		<property name="bankOfficeDao" ref="bankOfficeDao"/>
+	</bean>
+	<bean id="bankerService"       class="com.dmma.dashboard.core.services.BankerService">
+		<property name="bankerDao"   ref="bankerDao"/>
+	</bean>
+	<bean id="estateService"       class="com.dmma.dashboard.core.services.EstateService">
+		<property name="estateDao" ref="estateDao"/>
+	</bean>
+	<bean id="estateViewingService" class="com.dmma.dashboard.core.services.EstateViewingService">
+		<property name="estateViewingDao" ref="estateViewingDao"/>
+	</bean>        
+	<bean id="clientService" class="com.dmma.dashboard.core.services.ClientService">
+		<property name="clientDao" ref="clientDao"/>
+	</bean>
+	<bean id="mySecurityUserDetailsService" class="com.dmma.dashboard.core.security.MySecurityUserDetailsService">
+		<property name="userService"      ref="userService"/>
+		<property name="userRoleService"  ref="userRoleService"/>
+		<property name="brokerService"    ref="brokerService"/>
+		<property name="bankerService"    ref="bankerService"/>
+	</bean>
+	<bean id="tipService" class="com.dmma.dashboard.core.services.TipService">
+		<property name="tipDao" ref="tipDao"/>
+	</bean>
+	<bean id="haveToSellService" class="com.dmma.dashboard.core.services.HaveToSellService">
+		<property name="haveToSellDao" ref="haveToSellDao"/>
+	</bean>
+	<bean id="clientVisitService" class="com.dmma.dashboard.core.services.ClientVisitService">
+		<property name="clientVisitDao" ref="clientVisitDao"/>
+	</bean>
+	<bean id="mailTemplateService" class="com.dmma.base.app.mail.services.MailTemplateService">
+		<property name="mailTemplateDao" ref="mailTemplateDao"/>
+	</bean>
+	<bean id="mailService" class="com.dmma.base.app.mail.services.MailService">
+		<property name="mailDao" ref="mailDao"/>
+	</bean>
+	<bean id="mailProcessor" class="com.dmma.base.app.mail.services.MailProcessor">
+		<property name="mailService" ref="mailService"/>
+		<property name="mailServerConfigurator" ref="mailServerConfigurator"/>
+	</bean>
+	
+	
+	
+	<!-- Services -->
+	
+	<!-- /UTILS -->
+	<bean name="registrationValidator" class="com.dmma.dashboard.app.validators.RegistrationValidator"/>
+	<bean name="midasClient"           class="com.dmma.dashboard.midas.MidasClient"/>		
+
+</beans>

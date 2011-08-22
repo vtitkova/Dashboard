@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN" "http://castor.org/mapping.dtd">
+
+<mapping>
+	<description>Description of the mapping</description>
+	<class name="com.dmma.dashboard.midas.dto.RootXMLElement">
+		<map-to xml="diffgram"></map-to>
+		<field name="getProspectResult" type="com.dmma.dashboard.midas.dto.GetProspectXMLElement"
+			direct="true">
+			<bind-xml name="dsProperty" />
+		</field>
+	</class>
+
+	<class name="com.dmma.dashboard.midas.dto.GetProspectXMLElement">
+		<map-to xml="dsProperty"></map-to>
+		<field name="prospectMain" type="com.dmma.dashboard.midas.dto.GetProspectPropertyMainDTO"
+			direct="true">
+			<bind-xml name="dtPropertyMain" />
+		</field>
+		<field name="attachments" type="com.dmma.dashboard.midas.dto.GetProspectAttachmentDTO"
+			collection="arraylist" direct="true">
+			<bind-xml name="dtAttachments" />
+		</field>
+		<field name="shows" type="com.dmma.dashboard.midas.dto.GetProspectShowDTO"
+			collection="arraylist" direct="true">
+			<bind-xml name="dtShows" />
+		</field>
+		<field name="seller" type="com.dmma.dashboard.midas.dto.GetProspectSellerDTO"
+		direct="true">
+		      <bind-xml name="dtSeller"/>
+		</field>
+	</class>
+
+	<class name="com.dmma.dashboard.midas.dto.GetProspectShowDTO">
+		<field name="datefrom" type="string" direct="true">
+			<bind-xml name="VISNINGFRA" node="element" />
+		</field>
+		<field name="dateto" type="string" direct="true">
+			<bind-xml name="VISNINGTIL" node="element" />
+		</field>
+	</class>
+
+	<class name="com.dmma.dashboard.midas.dto.GetProspectSellerDTO">
+		<field name="epost" type="string" direct="true">
+			<bind-xml name="EPost" node="element" />
+		</field>
+	</class>
+
+	<class name="com.dmma.dashboard.midas.dto.GetProspectAttachmentDTO">
+		<field name="estateid" type="long" direct="true">
+			<bind-xml name="EstateID" node="element" />
+		</field>
+		<field name="typeid" type="int" direct="true">
+			<bind-xml name="TypeID" node="element" />
+		</field>
+		<field name="name" type="string" direct="true">
+			<bind-xml name="Name" node="element" />
+		</field>
+		<field name="url" type="string" direct="true">
+			<bind-xml name="URL" node="element" />
+		</field>
+		<field name="thumburl" type="string" direct="true">
+			<bind-xml name="ThumbURL" node="element" />
+		</field>
+	</class>
+
+	<class name="com.dmma.dashboard.midas.dto.GetProspectPropertyMainDTO">
+
+		<field name="estateid" type="string" direct="true">
+			<bind-xml name="EstateID" node="element" />
+		</field>
+		<field name="status" type="int" direct="true">
+			<bind-xml name="Status" node="element" />
+		</field>
+		<field name="publisert" type="string" direct="true">
+			<bind-xml name="Publisert" node="element" />
+		</field>
+		<field name="oppdragsnr" type="int" direct="true">
+			<bind-xml name="OppdragsNr" node="element" />
+		</field>
+		<field name="officeid" type="int" direct="true">
+			<bind-xml name="OfficeID" node="element" />
+		</field>
+		<field name="brokerid" type="int" direct="true">
+			<bind-xml name="BrokerID" node="element" />
+		</field>
+		<field name="utleie" type="int" direct="true">
+			<bind-xml name="Utleie" node="element" />
+		</field>
+		<field name="assistentid" type="int" direct="true">
+			<bind-xml name="AssistentID" node="element" />
+		</field>
+		<field name="typeid" type="int" direct="true">
+			<bind-xml name="TypeID" node="element" />
+		</field>
+		<field name="eiendomsnavn" type="string" direct="true">
+			<bind-xml name="EIENDOMSNAVN" node="element" />
+		</field>
+		<field name="overskrift1" type="string" direct="true">
+			<bind-xml name="OVERSKRIFT1" node="element" />
+		</field>
+		<field name="tomteareal" type="string" direct="true">
+			<bind-xml name="TOMTEAREAL" node="element" />
+		</field>
+		<field name="gnr" type="string" direct="true">
+			<bind-xml name="GNR" node="element" />
+		</field>
+		<field name="bnr" type="string" direct="true">
+			<bind-xml name="BNR" node="element" />
+		</field>
+		<field name="bruttoareal" type="string" direct="true">
+			<bind-xml name="BRUTTOAREAL" node="element" />
+		</field>
+		<field name="boareal" type="string" direct="true">
+			<bind-xml name="BOAREAL" node="element" />
+		</field>
+		<field name="innhold" type="string" direct="true">
+			<bind-xml name="INNHOLD" node="element" />
+		</field>
+		<field name="standard" type="string" direct="true">
+			<bind-xml name="STANDARD" node="element" />
+		</field>
+		<field name="antall_soverom" type="string" direct="true">
+			<bind-xml name="ANTALL_SOVEROM" node="element" />
+		</field>
+		<field name="byggeaar" type="string" direct="true">
+			<bind-xml name="BYGGEAAR" node="element" />
+		</field>
+		<field name="beliggenhet" type="string" direct="true">
+			<bind-xml name="BELIGGENHET" node="element" />
+		</field>
+		<field name="fellesgjeld" type="string" direct="true">
+			<bind-xml name="FELLESGJELD" node="element" />
+		</field>
+		<field name="husleie_eller_fellesutgifter" type="string" direct="true">
+			<bind-xml name="HUSLEIE_ELLER_FELLESUTGIFTER" node="element" />
+		</field>
+		<field name="etasje" type="string" direct="true">
+			<bind-xml name="ETASJE" node="element" />
+		</field>
+		<field name="prisantydning" type="string" direct="true">
+			<bind-xml name="PRISANTYDNING" node="element" />
+		</field>
+		<field name="eiendompostnr" type="string" direct="true">
+			<bind-xml name="EIENDOMPOSTNR" node="element" />
+		</field>
+		<field name="eiendompoststed" type="string" direct="true">
+			<bind-xml name="EIENDOMPOSTSTED" node="element" />
+		</field>
+		<field name="salgssum" type="string" direct="true">
+			<bind-xml name="SALGSSUM" node="element" />
+		</field>
+		<field name="annonsetekst" type="string" direct="true">
+			<bind-xml name="ANNONSETEKST" node="element" />
+		</field>
+		<field name="adkomst" type="string" direct="true">
+			<bind-xml name="ADKOMST" node="element" />
+		</field>
+		<field name="andel" type="string" direct="true">
+			<bind-xml name="ANDEL" node="element" />
+		</field>
+		<field name="andrebygg" type="string" direct="true">
+			<bind-xml name="ANDREBYGG" node="element" />
+		</field>
+		<field name="avgifter" type="string" direct="true">
+			<bind-xml name="AVGIFTER" node="element" />
+		</field>
+		<field name="bbl" type="string" direct="true">
+			<bind-xml name="BBL" node="element" />
+		</field>
+		<field name="bebyggelse" type="string" direct="true">
+			<bind-xml name="BEBYGGELSE" node="element" />
+		</field>
+		<field name="bra" type="string" direct="true">
+			<bind-xml name="BRA" node="element" />
+		</field>
+		<field name="brl_adr" type="string" direct="true">
+			<bind-xml name="BRL_ADR" node="element" />
+		</field>
+		<field name="brl_navn" type="string" direct="true">
+			<bind-xml name="BRL_NAVN" node="element" />
+		</field>
+		<field name="brl_paalydende" type="string" direct="true">
+			<bind-xml name="BRL_PAALYDENDE" node="element" />
+		</field>
+		<field name="brl_partialobligasjonnr" type="string" direct="true">
+			<bind-xml name="BRL_PARTIALOBLIGASJONNR" node="element" />
+		</field>
+		<field name="brl_orgnr" type="string" direct="true">
+			<bind-xml name="BRL_ORGNR" node="element" />
+		</field>
+		<field name="byggemaate" type="string" direct="true">
+			<bind-xml name="BYGGEMAATE" node="element" />
+		</field>
+		<field name="eiendomstype" type="string" direct="true">
+			<bind-xml name="EIENDOMSTYPE" node="element" />
+		</field>
+		<field name="eierskifteforsikring" type="string" direct="true">
+			<bind-xml name="EIERSKIFTEFORSIKRING" node="element" />
+		</field>
+		<field name="fellesformue" type="string" direct="true">
+			<bind-xml name="FELLESFORMUE" node="element" />
+		</field>
+		<field name="festeavgift" type="string" direct="true">
+			<bind-xml name="FESTEAVGIFT" node="element" />
+		</field>
+		<field name="finansiering" type="string" direct="true">
+			<bind-xml name="FINANSIERING" node="element" />
+		</field>
+		<field name="fnr" type="string" direct="true">
+			<bind-xml name="FNR" node="element" />
+		</field>
+		<field name="forkjopsrett" type="string" direct="true">
+			<bind-xml name="FORKJOPSRETT" node="element" />
+		</field>
+		<field name="forretningsforer" type="string" direct="true">
+			<bind-xml name="FORRETNINGSFORER" node="element" />
+		</field>
+		<field name="forretningsforer_adr" type="string" direct="true">
+			<bind-xml name="FORRETNINGSFORER_ADR" node="element" />
+		</field>
+		<field name="forretningsforer_tlf" type="string" direct="true">
+			<bind-xml name="FORRETNINGSFORER_TLF" node="element" />
+		</field>
+		<field name="fritidstilbud" type="string" direct="true">
+			<bind-xml name="FRITIDSTILBUD" node="element" />
+		</field>
+		<field name="gra" type="string" direct="true">
+			<bind-xml name="GRA" node="element" />
+		</field>
+		<field name="husleie_inkluderer" type="string" direct="true">
+			<bind-xml name="HUSLEIE_INKLUDERER" node="element" />
+		</field>
+		<field name="brl_innskud" type="string" direct="true">
+			<bind-xml name="BRL_INNSKUD" node="element" />
+		</field>
+		<field name="kommunaleavgifter" type="string" direct="true">
+			<bind-xml name="KOMMUNALEAVGIFTER" node="element" />
+		</field>
+		<field name="kommunenavn" type="string" direct="true">
+			<bind-xml name="KOMMUNENAVN" node="element" />
+		</field>
+		<field name="ligningsverdi" type="string" direct="true">
+			<bind-xml name="LIGNINGSVERDI" node="element" />
+		</field>
+		<field name="mangler" type="string" direct="true">
+			<bind-xml name="MANGLER" node="element" />
+		</field>
+		<field name="markedsverdi" type="string" direct="true">
+			<bind-xml name="MARKEDSVERDI" node="element" />
+		</field>
+		<field name="modernisert" type="string" direct="true">
+			<bind-xml name="MODERNISERT" node="element" />
+		</field>
+		<field name="notat" type="string" direct="true">
+			<bind-xml name="NOTAT" node="element" />
+		</field>
+		<field name="offentlig_kom" type="string" direct="true">
+			<bind-xml name="OFFENTLIG_KOM" node="element" />
+		</field>
+		<field name="omkostninger" type="string" direct="true">
+			<bind-xml name="OMKOSTNINGER" node="element" />
+		</field>
+		<field name="oppvarming" type="string" direct="true">
+			<bind-xml name="OPPVARMING" node="element" />
+		</field>
+		<field name="overskrift2" type="string" direct="true">
+			<bind-xml name="OVERSKRIFT2" node="element" />
+		</field>
+		<field name="overtakelse" type="string" direct="true">
+			<bind-xml name="OVERTAKELSE" node="element" />
+		</field>
+		<field name="parkering" type="string" direct="true">
+			<bind-xml name="PARKERING" node="element" />
+		</field>
+		<field name="polise_nr" type="string" direct="true">
+			<bind-xml name="POLISE_NR" node="element" />
+		</field>
+		<field name="polise_selskap" type="string" direct="true">
+			<bind-xml name="POLISE_SELSKAP" node="element" />
+		</field>
+		<field name="polise_belop" type="string" direct="true">
+			<bind-xml name="POLISE_BELOP" node="element" />
+		</field>
+		<field name="regulering" type="string" direct="true">
+			<bind-xml name="REGULERING" node="element" />
+		</field>
+		<field name="rettigheter_servitutter" type="string" direct="true">
+			<bind-xml name="RETTIGHETER_SERVITUTTER" node="element" />
+		</field>
+		<field name="sameiebrok" type="string" direct="true">
+			<bind-xml name="SAMEIEBROK" node="element" />
+		</field>
+		<field name="eier" type="string" direct="true">
+			<bind-xml name="EIER" node="element" />
+		</field>
+		<field name="skole_barnehage" type="string" direct="true">
+			<bind-xml name="SKOLE_BARNEHAGE" node="element" />
+		</field>
+		<field name="snr" type="string" direct="true">
+			<bind-xml name="SNR" node="element" />
+		</field>
+		<field name="takst_tekniskverdi" type="string" direct="true">
+			<bind-xml name="TAKST_TEKNISKVERDI" node="element" />
+		</field>
+		<field name="takst_laaneverdi" type="string" direct="true">
+			<bind-xml name="TAKST_LAANEVERDI" node="element" />
+		</field>
+		<field name="takstdato" type="string" direct="true">
+			<bind-xml name="TAKSTDATO" node="element" />
+		</field>
+		<field name="takstmann" type="string" direct="true">
+			<bind-xml name="TAKSTMANN" node="element" />
+		</field>
+		<field name="tomtebeskrivelse" type="string" direct="true">
+			<bind-xml name="TOMTEBESKRIVELSE" node="element" />
+		</field>
+		<field name="transportgebyr" type="string" direct="true">
+			<bind-xml name="TRANSPORTGEBYR" node="element" />
+		</field>
+		<field name="utstyr" type="string" direct="true">
+			<bind-xml name="UTSTYR" node="element" />
+		</field>
+		<field name="vei_vann_kloakk" type="string" direct="true">
+			<bind-xml name="VEI_VANN_KLOAKK" node="element" />
+		</field>
+		<field name="visningsavtale" type="string" direct="true">
+			<bind-xml name="VISNINGSAVTALE" node="element" />
+		</field>
+		<field name="forside_tekst" type="string" direct="true">
+			<bind-xml name="FORSIDE_TEKST" node="element" />
+		</field>
+		<field name="eierform" type="string" direct="true">
+			<bind-xml name="EIERFORM" node="element" />
+		</field>
+		<field name="eiendomskategori" type="string" direct="true">
+			<bind-xml name="EIENDOMSKATEGORI" node="element" />
+		</field>
+		<field name="omraade" type="string" direct="true">
+			<bind-xml name="OMRAADE" node="element" />
+		</field>
+		<field name="diverse" type="string" direct="true">
+			<bind-xml name="DIVERSE" node="element" />
+		</field>
+		<field name="lnr" type="string" direct="true">
+			<bind-xml name="LNR" node="element" />
+		</field>
+		<field name="heftelser" type="string" direct="true">
+			<bind-xml name="HEFTELSER" node="element" />
+		</field>
+		<field name="gebyrskjote" type="string" direct="true">
+			<bind-xml name="GebyrSkjote" node="element" />
+		</field>
+		<field name="gebyrpantedok" type="string" direct="true">
+			<bind-xml name="GebyrPantedok" node="element" />
+		</field>
+		<field name="gebyrpantatt" type="string" direct="true">
+			<bind-xml name="GebyrPantatt" node="element" />
+		</field>
+		<field name="finnkode" type="string" direct="true">
+			<bind-xml name="FinnKode" node="element" />
+		</field>
+		<field name="ligningsaar" type="string" direct="true">
+			<bind-xml name="LIGNINGSAAR" node="element" />
+		</field>
+		<field name="antall_rom" type="string" direct="true">
+			<bind-xml name="ANTALL_ROM" node="element" />
+		</field>
+		<field name="tomtetype" type="string" direct="true">
+			<bind-xml name="Tomtetype" node="element" />
+		</field>
+		<field name="p_rom" type="string" direct="true">
+			<bind-xml name="P-ROM" node="element" />
+		</field>
+		<field name="arealbeskrivelse" type="string" direct="true">
+			<bind-xml name="ArealBeskrivelse" node="element" />
+		</field>
+		<field name="laanevilkaar" type="string" direct="true">
+			<bind-xml name="LaaneVilkaar" node="element" />
+		</field>
+		<field name="fastekostnader" type="string" direct="true">
+			<bind-xml name="FasteKostnader" node="element" />
+		</field>
+		<field name="midlertidigbrukstillatelse" type="string" direct="true">
+			<bind-xml name="MidlertidigBrukstillatelse" node="element" />
+		</field>
+		<field name="trygghetsavtalen" type="string" direct="true">
+			<bind-xml name="Trygghetsavtalen" node="element" />
+		</field>
+		<field name="sameiermislighold" type="string" direct="true">
+			<bind-xml name="SameierMislighold" node="element" />
+		</field>
+		<field name="konsesjon" type="string" direct="true">
+			<bind-xml name="Konsesjon" node="element" />
+		</field>
+		<field name="odel" type="string" direct="true">
+			<bind-xml name="Odel" node="element" />
+		</field>
+		<field name="dyrehold" type="string" direct="true">
+			<bind-xml name="Dyrehold" node="element" />
+		</field>
+		<field name="meglersvederlag" type="string" direct="true">
+			<bind-xml name="MeglersVederlag" node="element" />
+		</field>
+		<field name="utleiemuligheter" type="string" direct="true">
+			<bind-xml name="UtleieMuligheter" node="element" />
+		</field>
+		<field name="broedtekst" type="string" direct="true">
+			<bind-xml name="BroedTekst" node="element" />
+		</field>
+		<field name="ferdigattest" type="string" direct="true">
+			<bind-xml name="FerdigAttest" node="element" />
+		</field>
+		<field name="andreutgifter" type="string" direct="true">
+			<bind-xml name="AndreUtgifter" node="element" />
+		</field>
+		<field name="avtalebetingelser" type="string" direct="true">
+			<bind-xml name="AvtaleBetingelser" node="element" />
+		</field>
+		<field name="samlepunkt" type="string" direct="true">
+			<bind-xml name="SamlePunkt" node="element" />
+		</field>
+		<field name="vedlegg" type="string" direct="true">
+			<bind-xml name="Vedlegg" node="element" />
+		</field>
+		<field name="andregebyrer" type="string" direct="true">
+			<bind-xml name="AndreGebyrer" node="element" />
+		</field>
+		<field name="profilering" type="string" direct="true">
+			<bind-xml name="Profilering" node="element" />
+		</field>
+		<field name="avgiftsgrunnlag" type="string" direct="true">
+			<bind-xml name="Avgiftsgrunnlag" node="element" />
+		</field>
+		<field name="selgerfodselsdato" type="string" direct="true">
+			<bind-xml name="SelgerFodselsdato" node="element" />
+		</field>
+		<field name="finnpartnerid" type="string" direct="true">
+			<bind-xml name="FinnPartnerID" node="element" />
+		</field>
+		<field name="pris_fra" type="string" direct="true">
+			<bind-xml name="Pris_fra" node="element" />
+		</field>
+		<field name="pris_til" type="string" direct="true">
+			<bind-xml name="Pris_til" node="element" />
+		</field>
+		<field name="bra_fra" type="string" direct="true">
+			<bind-xml name="BRA_fra" node="element" />
+		</field>
+		<field name="bra_til" type="string" direct="true">
+			<bind-xml name="BRA_til" node="element" />
+		</field>
+		<field name="energimerking" type="string" direct="true">
+			<bind-xml name="Energimerking" node="element" />
+		</field>
+		<field name="x" type="string" direct="true">
+			<bind-xml name="X" node="element" />
+		</field>
+		<field name="y" type="string" direct="true">
+			<bind-xml name="Y" node="element" />
+		</field>
+	</class>
+</mapping>
