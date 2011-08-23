@@ -5,3 +5,5 @@ target
 .project
 .settings
 dashboard/dashboard-core/src/main/resources/dashboard.properties
+dashboard/dashboard-web/war/WEB-INF/lib
+
