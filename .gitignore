@@ -6,5 +6,6 @@ target
 .settings
 dashboard/dashboard-core/src/main/resources/dashboard.properties
 dashboard/dashboard-web/war/WEB-INF/lib
+dashboard/dashboard-web/war/WEB-INF/classes
 dashboard/dashboard-midas/src/main/java/com/dmma/dashboard/midas/axisclient
 
