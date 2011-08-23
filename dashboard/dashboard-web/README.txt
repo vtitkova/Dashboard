@@ -29,12 +29,16 @@ http://data.emprof.no/wsData01.asmx?op=GetBroker
 1. PROJECT STRUCTURE
 Downloaded project should have next structure.
  
-BrokerDashboard
- |--docs               -folder for project documentation     
- |--dashboard          -folder for project modules
- |   |--dashboard-web  -folder for web project source code (see below)
- |   `--pom.xml        -parent POM file (define all required dependencies, parameters and repositories for project)
- `--workspace          -setup Eclipse WorkSpace in this folder. (probably this folder will not exist)
+Dashboard               -project base directory
+ |--docs                -folder for project documentation     
+ |--dashboard           -folder for project modules
+ |   |--dashboard-core  -configuration, daos, services, entities (models)
+ |   |--dashboard-midas -connector to MIDAS services
+ |   |--dashboard-web   -web application
+ |   |--dmma-base-app   -dim's framework base 
+ |   |--dmma-base-app   -dim's framework GWT module
+ |   `--pom.xml         -parent POM file (define all required dependencies, parameters and repositories for project)
+ `--workspace           -setup Eclipse WorkSpace in this folder. (probably this folder will not exist)
 
 
 dashboard-web
@@ -62,14 +66,15 @@ dashboard-web
 	   $>mvn gwt:run
 
 3. IMPORT PROJECT TO ECLIPSE
-	*. insure that your Eclipse have installed GWT plugin and SDK 
-	   for more information see ECLIPSE PreSetup steps.
 	a. clean the project 
 	   $>mvn clean
-	b. create eclipse project configurration
+	b. create project configurration for eclipse (this will creates next files: .settings, .classpath, .project)
 	   $>mvn eclipse:eclipse
-	c. lunch eclipse and select BrokerDashboard\workspace directory as workspace.
-	d. register M2_REPO variable (if required)
+	c. start eclipse
+	   *is better to use new workspace, and pinpoint it to $PROJECT_BASE/workspace
+	d. insure that your Eclipse have installed GWT plugin and SDK 
+	   for more information see ECLIPSE PreSetup steps.
+	e. register M2_REPO variable (if required)
 	   Window->Preferences->Java->Build Path->Classpath Variables->New..
 	   Name: M2_REPO
 	   Path: "path to local maven repository" 
@@ -77,15 +82,19 @@ dashboard-web
 	   like  M2_REPO = C:/Program Files/Apache Software Foundation/apache-maven-2.2.1/repo 
 	   or    M2_REPO = D:\.m2\repository
 	   ...................................................................................
-	e. import project into Eclipse: 
-       File->Import...->Existing Project into Workspace-> ${basedir}/dashboard-web 
-    f. use google web toolkit
+	f. import project into Eclipse: 
+       File->Import...->Existing Project into Workspace-> ${basedir}/dashboard 
+    	you should be able to import 5 projects: 
+    		dashboard-core, dashboard-midas, dashboard-web, 
+    		dmma-base-app, dmma-base-gwt
+    g. change encoding for all imported projects to UTF-8
+    h. use google web toolkit
 	   Project->Properties->Google->Web Tolkit->Use Google web tolkit
 	   *** if you will have error like 
 	   *** The project 'XXX' does not have any GWT SDK's on its build path 
 	   *** GWT SDK library must appear before the Maven dependencies in the "Order and Export" tab.
 	   
-    g. create run configuration
+    h. create run configuration
 	   Run->Run Configurations...->Web Application
 		
 		Project:    dashboard-web
@@ -118,7 +127,7 @@ dashboard-web
 ECLIPSE PreSetup steps
 	a. install plugin for eclipse
 	Help->Install New Software...   http://dl.google.com/eclipse/plugin/3.6
-	I would recomend install only plugin and MANUALY download GWT 2.0.4 SDK, unzip it into folder.
+	I would recomend install only plugin and MANUALY download GWT 2.3.0 SDK, unzip it into folder.
 
 NOTES: 
   Somtimes it is required to convert project to Faceted Form, to do this do
