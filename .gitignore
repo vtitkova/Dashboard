@@ -1,0 +1,7 @@
+workspace
+target
+.classpath
+.metadata
+.project
+.settings
+dashboard/dashboard-core/src/main/resources/dashboard.properties
